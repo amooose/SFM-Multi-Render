@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SFM_MultiRender.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="launchArgs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-min -insecure -sfm_width 3840 -sfm_height 2160 -w 3840 -h 2160 +sv_lan 1 -sfm_startup_script "G:\video juegos\SteamApps\common\SourceFilmmaker\game\workshop\scripts\sfm\mainmenu\umfc\Directional_Scale_Patch.py"</Value>
+    </Setting>
+    <Setting Name="sfmExe" Type="System.String" Scope="User">
+      <Value Profile="(Default)">G:\video juegos\SteamApps\common\SourceFilmmaker\game\sfm.exe</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
