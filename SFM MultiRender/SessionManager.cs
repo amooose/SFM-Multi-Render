@@ -72,7 +72,7 @@ namespace SFM_MultiRender
                 if (ex.HResult == -0x7FECEB00)
                 {
                     //either we cant access sfm's memory, or it was a session
-                    //with very little frames and its close, mark it as done.
+                    //with very little frames and it completed before we even got memory access, mark it as done.
                     Console.WriteLine($"DONE: Error: {ex.Message}");
                     session.started = true;
                 }
@@ -115,8 +115,6 @@ namespace SFM_MultiRender
         static SFM_MultiRender mainForm = Application.OpenForms["SFM_MultiRender"] as SFM_MultiRender;
         static async Task<bool> sessionWatcher(Control.ControlCollection sessions)
         {
-            // Start the periodic task
-            int progCount = 0;
             windowHider hider = new windowHider();
             while (activeLayoffsList.Count > 0)
             {
@@ -134,15 +132,13 @@ namespace SFM_MultiRender
                         sessionTemp.layoffProgressBar.Value = progress;
                         sessionTemp.layoffProgressBar.Text = progress + "%";
                     }
-                    //Console.WriteLine("Session " + (session.number + 1) + ": got " + progress);
                 }
                 await Task.Delay(1000);
-                //yes, dumb but it is 4am
                 
                 if (mainForm.autoHideCheckbox.Checked)
                 {
                     hider.FakeMinimizeAllWindowsByPartialTitle(".dmx - Source Filmmaker");
-                    hider.FakeMinimizeAllWindowsByPartialTitle("Movie Layoff");
+                    hider.FakeMinimizeAllWindowsByPartialTitle("Movie Layoff Progress");
                 }
             }
             return true;

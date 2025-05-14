@@ -176,11 +176,6 @@ namespace SFM_MultiRender
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FakeMinimizeWindowByTitle("Movie Layoff Progress");
-        }
-
         private void addSession_Click(object sender, EventArgs e)
         {
             sessionCountVisual.Show();
