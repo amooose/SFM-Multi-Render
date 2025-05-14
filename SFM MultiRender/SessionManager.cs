@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SFM_MultiRender
 {
-
-
-    internal class SessionManager : SFM_MultiRender
+    internal class SessionManager
     {
         public class activeLayoffSession
         {
@@ -64,8 +60,9 @@ namespace SFM_MultiRender
                 }
 
                 return finalPercent;
-            } 
-            catch (Exception ex){
+            }
+            catch (Exception ex)
+            {
                 if (ex.HResult == -0x7FECEB00)
                 {
                     //either we cant access sfm's memory, or it was a session
@@ -83,7 +80,7 @@ namespace SFM_MultiRender
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 FileName = Properties.Settings.Default.sfmExe.Replace("\"", ""),
-                Arguments = Properties.Settings.Default.launchArgs+ session.layoffArg,
+                Arguments = Properties.Settings.Default.launchArgs + session.layoffArg,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
@@ -92,13 +89,13 @@ namespace SFM_MultiRender
                 Process proc = Process.Start(startInfo);
                 if (proc != null)
                 {
-                    mainForm.debugtxt.Text += Environment.NewLine+"Started process. PID:" + proc.Id;
+                    mainForm.debugtxt.Text += Environment.NewLine + "Started process. PID:" + proc.Id;
                     return proc.Id;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                mainForm.debugtxt.Text += Environment.NewLine + "Couldn't start Session #"+ session.number+"!";
+                mainForm.debugtxt.Text += Environment.NewLine + "Couldn't start Session #" + session.number + "!";
             }
             return -1;
         }
@@ -110,7 +107,8 @@ namespace SFM_MultiRender
             windowHider hider = new windowHider();
             while (activeLayoffsList.Count > 0)
             {
-                for (int i = activeLayoffsList.Count - 1; i >= 0; i--) {
+                for (int i = activeLayoffsList.Count - 1; i >= 0; i--)
+                {
                     activeLayoffSession session = activeLayoffsList[i];
                     int progress = await getProgressFromPID(session);
                     SessionCtrlGroup sessionTemp = (SessionCtrlGroup)sessions[session.number];
@@ -126,7 +124,7 @@ namespace SFM_MultiRender
                     }
                 }
                 await Task.Delay(1000);
-                
+
                 if (mainForm.autoHideCheckbox.Checked)
                 {
                     hider.fakeMinimize(".dmx - Source Filmmaker");
@@ -151,28 +149,9 @@ namespace SFM_MultiRender
                 activeLayoffsList.Add(temp);
                 i++;
             }
-            
+
             return await sessionWatcher(sessions);
         }
-
-        private void InitializeComponent()
-        {
-            this.SuspendLayout();
-            // 
-            // SessionManager
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.ClientSize = new System.Drawing.Size(672, 811);
-            this.Name = "SessionManager";
-            this.Load += new System.EventHandler(this.SessionManager_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
-        }
-
-        private void SessionManager_Load(object sender, EventArgs e)
-        {
-
-        }
     }
+
 }

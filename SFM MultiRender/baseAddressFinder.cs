@@ -27,8 +27,7 @@ namespace SFM_MultiRender
                     {
                         if (module.ModuleName.Equals(dllName, StringComparison.OrdinalIgnoreCase))
                         {
-                            Console.WriteLine($"DLL: {module.ModuleName}");
-                            Console.WriteLine($"Base Address: 0x{module.BaseAddress.ToInt64():X}");
+                            Console.WriteLine("DLL: "+module.ModuleName);
                             dllAddress = module.BaseAddress;
                         }
                     }

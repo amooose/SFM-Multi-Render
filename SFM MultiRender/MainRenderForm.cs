@@ -215,7 +215,7 @@ namespace SFM_MultiRender
             SessionManager sessionManager = new SessionManager();
             await sessionManager.launchSessions(sessionLayoutList.Controls);
             setControls(true);
-            
+            this.TopMost = false;
             statusModule.Text = "Done!";
             statusModule.BackColor = SystemColors.Highlight;
 

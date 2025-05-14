@@ -56,12 +56,12 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>sfm multi.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.6.0.0\lib\netstandard2.0\Costura.dll</HintPath>
-    </Reference>
-    <Reference Include="Jupiter, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Jupiter.1.6.0\lib\netstandard2.0\Jupiter.dll</HintPath>
     </Reference>
     <Reference Include="MentQ">
       <HintPath>..\..\..\..\Documents\Winform-controls-master\MentQ\obj\Debug\MentQ.dll</HintPath>
@@ -82,11 +82,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ByteSearch.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="MainRenderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainRenderForm.Designer.cs">
+      <DependentUpon>MainRenderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="baseAddressFinder.cs" />
     <Compile Include="MemSearch.cs" />
@@ -104,12 +104,10 @@
     <Compile Include="SessionCtrlGroup.Designer.cs">
       <DependentUpon>SessionCtrlGroup.cs</DependentUpon>
     </Compile>
-    <Compile Include="SessionManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SessionManager.cs" />
     <Compile Include="windowHider.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainRenderForm.resx">
+      <DependentUpon>MainRenderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="optionsForm.resx">
       <DependentUpon>optionsForm.cs</DependentUpon>
@@ -126,9 +124,6 @@
     </Compile>
     <EmbeddedResource Include="SessionCtrlGroup.resx">
       <DependentUpon>SessionCtrlGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SessionManager.resx">
-      <DependentUpon>SessionManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -152,6 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sfm multi.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.8.2\build\Fody.targets" Condition="Exists('..\packages\Fody.6.8.2\build\Fody.targets')" />

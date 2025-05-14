@@ -25,9 +25,7 @@ namespace SFM_MultiRender.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("-min -insecure -sfm_width 3840 -sfm_height 2160 -w 3840 -h 2160 +sv_lan 1 -sfm_st" +
-            "artup_script \"G:\\video juegos\\SteamApps\\common\\SourceFilmmaker\\game\\workshop\\scr" +
-            "ipts\\sfm\\mainmenu\\umfc\\Directional_Scale_Patch.py\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string launchArgs {
             get {
                 return ((string)(this["launchArgs"]));
@@ -39,7 +37,7 @@ namespace SFM_MultiRender.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("G:\\video juegos\\SteamApps\\common\\SourceFilmmaker\\game\\sfm.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string sfmExe {
             get {
                 return ((string)(this["sfmExe"]));
