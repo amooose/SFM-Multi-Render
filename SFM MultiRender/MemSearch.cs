@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -159,7 +160,19 @@ namespace SFM_MultiRender
             if (ProgressChangedEvent != null)
                 ProgressChangedEvent(amount);
         }
-
+        public bool isProcessRunning(int pid)
+        {
+            try
+            {
+                Process process = Process.GetProcessById(pid);
+                return !process.HasExited;
+            }
+            catch (ArgumentException)
+            {
+                // Thrown if the process is not running
+                return false;
+            }
+        }
         public void firstScan(byte[] buffer, Action callback = null)
         {
             if (_handle == IntPtr.Zero)

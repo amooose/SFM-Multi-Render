@@ -37,15 +37,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.sessionGroupBox = new MentQ.MentQGroupBox();
-            this.mentQProgressBar1 = new MentQ.MentQProgressBar();
+            this.layoffProgressBar = new MentQ.MentQProgressBar();
             this.sessionGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // startFrame
             // 
+            this.startFrame.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.startFrame.Location = new System.Drawing.Point(8, 60);
             this.startFrame.Name = "startFrame";
-            this.startFrame.Size = new System.Drawing.Size(95, 34);
+            this.startFrame.Size = new System.Drawing.Size(95, 25);
             this.startFrame.TabIndex = 1;
             // 
             // label2
@@ -62,7 +63,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 99);
+            this.label3.Location = new System.Drawing.Point(8, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 4;
@@ -70,23 +71,26 @@
             // 
             // endFrame
             // 
-            this.endFrame.Location = new System.Drawing.Point(8, 122);
+            this.endFrame.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endFrame.Location = new System.Drawing.Point(8, 114);
             this.endFrame.Name = "endFrame";
-            this.endFrame.Size = new System.Drawing.Size(95, 34);
+            this.endFrame.Size = new System.Drawing.Size(95, 25);
             this.endFrame.TabIndex = 3;
             // 
             // projectFile
             // 
+            this.projectFile.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.projectFile.Location = new System.Drawing.Point(126, 60);
             this.projectFile.Name = "projectFile";
-            this.projectFile.Size = new System.Drawing.Size(208, 34);
+            this.projectFile.Size = new System.Drawing.Size(264, 25);
             this.projectFile.TabIndex = 5;
             // 
             // outputDir
             // 
-            this.outputDir.Location = new System.Drawing.Point(126, 122);
+            this.outputDir.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.outputDir.Location = new System.Drawing.Point(126, 114);
             this.outputDir.Name = "outputDir";
-            this.outputDir.Size = new System.Drawing.Size(208, 34);
+            this.outputDir.Size = new System.Drawing.Size(264, 25);
             this.outputDir.TabIndex = 6;
             // 
             // label4
@@ -103,7 +107,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(123, 99);
+            this.label5.Location = new System.Drawing.Point(123, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(159, 20);
             this.label5.TabIndex = 8;
@@ -115,7 +119,7 @@
             this.sessionGroupBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.sessionGroupBox.Closable = false;
             this.sessionGroupBox.Closed = false;
-            this.sessionGroupBox.Controls.Add(this.mentQProgressBar1);
+            this.sessionGroupBox.Controls.Add(this.layoffProgressBar);
             this.sessionGroupBox.Controls.Add(this.startFrame);
             this.sessionGroupBox.Controls.Add(this.label5);
             this.sessionGroupBox.Controls.Add(this.label2);
@@ -135,23 +139,23 @@
             this.sessionGroupBox.UpperColor = System.Drawing.Color.Empty;
             this.sessionGroupBox.Click += new System.EventHandler(this.mentQGroupBox1_Click);
             // 
-            // mentQProgressBar1
+            // layoffProgressBar
             // 
-            this.mentQProgressBar1.AlternateForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.mentQProgressBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
-            this.mentQProgressBar1.CornerRounding = 5;
-            this.mentQProgressBar1.DiagonalLines = false;
-            this.mentQProgressBar1.Font = new System.Drawing.Font("Segoe UI", 7F);
-            this.mentQProgressBar1.ForeColor = System.Drawing.Color.White;
-            this.mentQProgressBar1.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.mentQProgressBar1.Location = new System.Drawing.Point(8, 162);
-            this.mentQProgressBar1.Name = "mentQProgressBar1";
-            this.mentQProgressBar1.Size = new System.Drawing.Size(382, 20);
-            this.mentQProgressBar1.TabIndex = 9;
-            this.mentQProgressBar1.Text = "0%";
-            this.mentQProgressBar1.Underline = false;
-            this.mentQProgressBar1.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.mentQProgressBar1.UnderlineSize = 2;
+            this.layoffProgressBar.AlternateForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.layoffProgressBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.layoffProgressBar.CornerRounding = 5;
+            this.layoffProgressBar.DiagonalLines = false;
+            this.layoffProgressBar.Font = new System.Drawing.Font("Segoe UI", 7F);
+            this.layoffProgressBar.ForeColor = System.Drawing.Color.White;
+            this.layoffProgressBar.InactiveBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.layoffProgressBar.Location = new System.Drawing.Point(8, 153);
+            this.layoffProgressBar.Name = "layoffProgressBar";
+            this.layoffProgressBar.Size = new System.Drawing.Size(382, 25);
+            this.layoffProgressBar.TabIndex = 9;
+            this.layoffProgressBar.Text = "0%";
+            this.layoffProgressBar.Underline = false;
+            this.layoffProgressBar.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.layoffProgressBar.UnderlineSize = 2;
             // 
             // SessionCtrlGroup
             // 
@@ -179,6 +183,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private MentQ.MentQGroupBox sessionGroupBox;
-        private MentQ.MentQProgressBar mentQProgressBar1;
+        public MentQ.MentQProgressBar layoffProgressBar;
     }
 }

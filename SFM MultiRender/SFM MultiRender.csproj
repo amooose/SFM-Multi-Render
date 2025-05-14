@@ -107,6 +107,7 @@
     <Compile Include="SessionManager.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="windowHider.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

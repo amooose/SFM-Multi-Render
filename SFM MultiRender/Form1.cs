@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace SFM_MultiRender
 {
@@ -23,6 +27,10 @@ namespace SFM_MultiRender
         {
             InitializeComponent();
 
+        }
+        public bool autoHideCheckboxStatus
+        {
+            get => autoHideCheckbox.Checked;
         }
 
         private void AddNewSessionCtrlGroup()
@@ -123,20 +131,66 @@ namespace SFM_MultiRender
                 i++;
             }
         }
-        
+
+
+        [DllImport("user32.dll", SetLastError = true)]
+        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+
+        [DllImport("user32.dll")]
+        static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
+
+        [DllImport("user32.dll")]
+        static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left, Top, Right, Bottom;
+        }
+
+        static void FakeMinimizeWindowByTitle(string windowTitle)
+        {
+            IntPtr hWnd = FindWindow(null, windowTitle);
+
+            if (hWnd == IntPtr.Zero)
+            {
+                Console.WriteLine("Window not found.");
+                return;
+            }
+
+            // Get current size
+            if (GetWindowRect(hWnd, out RECT rect))
+            {
+                int width = rect.Right - rect.Left;
+                int height = rect.Bottom - rect.Top;
+
+                // Move it just below the primary screen
+                int offscreenY = Screen.PrimaryScreen.WorkingArea.Bottom + 100;
+
+                MoveWindow(hWnd, rect.Left, offscreenY, width, height, true);
+                Console.WriteLine("Window moved off-screen.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to get window rect.");
+            }
+        }
+
         private void button3_Click(object sender, EventArgs e)
         {
-           // Main();
+            FakeMinimizeWindowByTitle("Movie Layoff Progress");
         }
 
         private void addSession_Click(object sender, EventArgs e)
         {
+            sessionCountVisual.Show();
             AddNewSessionCtrlGroup();
         }
 
         private void removeSession_Click(object sender, EventArgs e)
         {
             if (SESSION_TOTAL == 0) { return; }
+            if (SESSION_TOTAL == 1) { sessionCountVisual.Hide(); }
             sessionLayoutList.Controls.RemoveAt(SESSION_TOTAL - 1);
             SESSION_TOTAL -= 1;
             if (SESSION_TOTAL <= 10)
@@ -183,13 +237,46 @@ namespace SFM_MultiRender
             }
             return true;
         }
-        private void launch_Click(object sender, EventArgs e)
+
+        private void resetSessionProgress()
+        {
+            foreach (SessionCtrlGroup session in sessionLayoutList.Controls)
+            {
+                session.layoffProgressBar.Value = 0;
+                session.layoffProgressBar.Text = "0%";
+            }
+        }
+
+        public void setControls(bool val)
+        {
+            if (!val) { launchButton.BackColor = Color.LightSlateGray; }
+            else { launchButton.BackColor = Color.MediumSeaGreen; }
+            launchButton.Enabled = val;
+            removeSessionButton.Enabled = val;
+            addSessionButton.Enabled = val;
+            dupeButton1.Enabled = val;
+            dupeButton2.Enabled = val;
+            launchOptionsButton.Enabled = val;
+        }
+
+        private async void launch_Click(object sender, EventArgs e)
         {
             if (!preLaunchCheck()){
                 return;
             }
+            this.TopMost = true;
+            setControls(false);
+            resetSessionProgress();
+            statusModule.Text = "Rendering!";
+            statusModule.BackColor = Color.Green;
+            statusModule.Show();
             SessionManager sessionManager = new SessionManager();
-            sessionManager.launchSessions(sessionLayoutList.Controls);
+            await sessionManager.launchSessions(sessionLayoutList.Controls);
+            setControls(true);
+            
+            statusModule.Text = "Done!";
+            statusModule.BackColor = SystemColors.Highlight;
+
         }
 
         private void sfmOptions_Click(object sender, EventArgs e)
