@@ -77,7 +77,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(275, 751);
+            this.button3.Location = new System.Drawing.Point(166, 736);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -414,15 +414,15 @@
             // 
             // creditLabel
             // 
-            this.creditLabel.AutoSize = true;
+            this.creditLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.creditLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
             this.creditLabel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.creditLabel.ForeColor = System.Drawing.Color.White;
-            this.creditLabel.Location = new System.Drawing.Point(377, 32);
+            this.creditLabel.Location = new System.Drawing.Point(72, 6);
             this.creditLabel.Name = "creditLabel";
-            this.creditLabel.Size = new System.Drawing.Size(118, 16);
+            this.creditLabel.Size = new System.Drawing.Size(137, 18);
             this.creditLabel.TabIndex = 36;
-            this.creditLabel.Text = "by an0nymooose";
+            this.creditLabel.Text = "an0nymooose\'s";
             // 
             // SFM_MultiRender
             // 
