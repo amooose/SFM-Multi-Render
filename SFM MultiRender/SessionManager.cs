@@ -93,7 +93,7 @@ namespace SFM_MultiRender
                     return proc.Id;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 mainForm.debugtxt.Text += Environment.NewLine + "Couldn't start Session #" + session.number + "!";
             }

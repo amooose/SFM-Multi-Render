@@ -59,12 +59,15 @@
   <PropertyGroup>
     <ApplicationIcon>sfm multi.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SFM_MultiRender.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Costura, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9919ef960d84173d, processorArchitecture=MSIL">
       <HintPath>..\packages\Costura.Fody.6.0.0\lib\netstandard2.0\Costura.dll</HintPath>
     </Reference>
-    <Reference Include="MentQ">
-      <HintPath>..\..\..\..\Documents\Winform-controls-master\MentQ\obj\Debug\MentQ.dll</HintPath>
+    <Reference Include="MentQ2">
+      <HintPath>..\..\..\..\Documents\Winform-controls-master\WinformThemes\bin\Debug\MentQ2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
