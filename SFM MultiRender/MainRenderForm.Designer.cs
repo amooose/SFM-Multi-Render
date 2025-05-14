@@ -51,6 +51,7 @@
             this.mentQInfoBox3 = new MentQ.MentQInfoBox();
             this.statusModule = new MentQ.MentQNotification();
             this.autoHideCheckbox = new MentQ.MentQCheckBox();
+            this.creditLabel = new System.Windows.Forms.Label();
             this.mentQGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(275, 751);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.button3.Size = new System.Drawing.Size(100, 28);
@@ -109,7 +110,7 @@
             this.launchButton.ForeColor = System.Drawing.Color.White;
             this.launchButton.isSquare = false;
             this.launchButton.Location = new System.Drawing.Point(489, 706);
-            this.launchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.launchButton.Margin = new System.Windows.Forms.Padding(4);
             this.launchButton.Name = "launchButton";
             this.launchButton.Size = new System.Drawing.Size(167, 71);
             this.launchButton.TabIndex = 30;
@@ -128,7 +129,7 @@
             this.mentQButton6.ForeColor = System.Drawing.Color.White;
             this.mentQButton6.isSquare = true;
             this.mentQButton6.Location = new System.Drawing.Point(665, -1);
-            this.mentQButton6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mentQButton6.Margin = new System.Windows.Forms.Padding(4);
             this.mentQButton6.Name = "mentQButton6";
             this.mentQButton6.Size = new System.Drawing.Size(57, 49);
             this.mentQButton6.TabIndex = 25;
@@ -146,7 +147,7 @@
             this.mentQButton3.ForeColor = System.Drawing.Color.White;
             this.mentQButton3.isSquare = true;
             this.mentQButton3.Location = new System.Drawing.Point(723, -1);
-            this.mentQButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mentQButton3.Margin = new System.Windows.Forms.Padding(4);
             this.mentQButton3.Name = "mentQButton3";
             this.mentQButton3.Size = new System.Drawing.Size(57, 49);
             this.mentQButton3.TabIndex = 24;
@@ -164,7 +165,7 @@
             this.removeSessionButton.ForeColor = System.Drawing.Color.White;
             this.removeSessionButton.isSquare = false;
             this.removeSessionButton.Location = new System.Drawing.Point(89, 709);
-            this.removeSessionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.removeSessionButton.Margin = new System.Windows.Forms.Padding(4);
             this.removeSessionButton.Name = "removeSessionButton";
             this.removeSessionButton.Size = new System.Drawing.Size(69, 54);
             this.removeSessionButton.TabIndex = 23;
@@ -183,7 +184,7 @@
             this.addSessionButton.ForeColor = System.Drawing.Color.White;
             this.addSessionButton.isSquare = false;
             this.addSessionButton.Location = new System.Drawing.Point(12, 709);
-            this.addSessionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addSessionButton.Margin = new System.Windows.Forms.Padding(4);
             this.addSessionButton.Name = "addSessionButton";
             this.addSessionButton.Size = new System.Drawing.Size(69, 54);
             this.addSessionButton.TabIndex = 22;
@@ -211,7 +212,7 @@
             this.mentQGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.mentQGroupBox1.Icon = null;
             this.mentQGroupBox1.Location = new System.Drawing.Point(489, 442);
-            this.mentQGroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mentQGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.mentQGroupBox1.Name = "mentQGroupBox1";
             this.mentQGroupBox1.Size = new System.Drawing.Size(168, 256);
             this.mentQGroupBox1.TabIndex = 18;
@@ -225,7 +226,7 @@
             this.dupeButton2.ForeColor = System.Drawing.Color.White;
             this.dupeButton2.isSquare = false;
             this.dupeButton2.Location = new System.Drawing.Point(17, 185);
-            this.dupeButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dupeButton2.Margin = new System.Windows.Forms.Padding(4);
             this.dupeButton2.Name = "dupeButton2";
             this.dupeButton2.Size = new System.Drawing.Size(133, 54);
             this.dupeButton2.TabIndex = 17;
@@ -245,7 +246,7 @@
             this.dupeButton1.ForeColor = System.Drawing.Color.White;
             this.dupeButton1.isSquare = false;
             this.dupeButton1.Location = new System.Drawing.Point(17, 52);
-            this.dupeButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dupeButton1.Margin = new System.Windows.Forms.Padding(4);
             this.dupeButton1.Name = "dupeButton1";
             this.dupeButton1.Size = new System.Drawing.Size(133, 54);
             this.dupeButton1.TabIndex = 16;
@@ -301,7 +302,7 @@
             this.launchOptionsButton.ForeColor = System.Drawing.Color.White;
             this.launchOptionsButton.isSquare = false;
             this.launchOptionsButton.Location = new System.Drawing.Point(383, 729);
-            this.launchOptionsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.launchOptionsButton.Margin = new System.Windows.Forms.Padding(4);
             this.launchOptionsButton.Name = "launchOptionsButton";
             this.launchOptionsButton.Size = new System.Drawing.Size(99, 50);
             this.launchOptionsButton.TabIndex = 18;
@@ -320,7 +321,7 @@
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.isSquare = true;
             this.exitButton.Location = new System.Drawing.Point(621, -1);
-            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(53, 49);
             this.exitButton.TabIndex = 32;
@@ -339,7 +340,7 @@
             this.minimizeButton.ForeColor = System.Drawing.Color.White;
             this.minimizeButton.isSquare = true;
             this.minimizeButton.Location = new System.Drawing.Point(572, -1);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4);
             this.minimizeButton.Name = "minimizeButton";
             this.minimizeButton.Size = new System.Drawing.Size(53, 49);
             this.minimizeButton.TabIndex = 33;
@@ -365,7 +366,7 @@
             this.mentQInfoBox3.isCenter = false;
             this.mentQInfoBox3.isClickable = false;
             this.mentQInfoBox3.Location = new System.Drawing.Point(0, -5);
-            this.mentQInfoBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mentQInfoBox3.Margin = new System.Windows.Forms.Padding(4);
             this.mentQInfoBox3.Name = "mentQInfoBox3";
             this.mentQInfoBox3.Size = new System.Drawing.Size(795, 74);
             this.mentQInfoBox3.TabIndex = 21;
@@ -411,11 +412,24 @@
             this.autoHideCheckbox.Text = "Auto-hide SFM Sessions";
             this.autoHideCheckbox.UseVisualStyleBackColor = false;
             // 
+            // creditLabel
+            // 
+            this.creditLabel.AutoSize = true;
+            this.creditLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.creditLabel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creditLabel.ForeColor = System.Drawing.Color.White;
+            this.creditLabel.Location = new System.Drawing.Point(377, 32);
+            this.creditLabel.Name = "creditLabel";
+            this.creditLabel.Size = new System.Drawing.Size(118, 16);
+            this.creditLabel.TabIndex = 36;
+            this.creditLabel.Text = "by an0nymooose";
+            // 
             // SFM_MultiRender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Controls.Add(this.creditLabel);
             this.Controls.Add(this.autoHideCheckbox);
             this.Controls.Add(this.statusModule);
             this.Controls.Add(this.minimizeButton);
@@ -469,6 +483,7 @@
         public System.Windows.Forms.TextBox debugtxt;
         public MentQ.MentQCheckBox autoHideCheckbox;
         public MentQ.MentQNotification statusModule;
+        private System.Windows.Forms.Label creditLabel;
     }
 }
 
