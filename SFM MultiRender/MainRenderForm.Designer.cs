@@ -375,7 +375,7 @@
             this.mentQInfoBox3.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.mentQInfoBox3.UnderlineSize = 4;
             this.mentQInfoBox3.yPosAdjust = 7;
-            this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mentQInfoBox3_MouseDown);
+            this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainRenderFormHeader_MouseDown);
             // 
             // statusModule
             // 

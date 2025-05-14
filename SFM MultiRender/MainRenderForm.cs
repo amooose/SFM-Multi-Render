@@ -142,7 +142,7 @@ namespace SFM_MultiRender
             sessionCountVisual.Text = SESSION_TOTAL.ToString();
         }
 
-        private void mentQInfoBox3_MouseDown(object sender, MouseEventArgs e)
+        private void mainRenderFormHeader_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -218,7 +218,6 @@ namespace SFM_MultiRender
             this.TopMost = false;
             statusModule.Text = "Done!";
             statusModule.BackColor = SystemColors.Highlight;
-
         }
 
         private void sfmOptions_Click(object sender, EventArgs e)
