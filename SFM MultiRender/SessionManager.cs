@@ -33,13 +33,14 @@ namespace SFM_MultiRender
         private static int PROCESS_ENDED = -2;
 
         public static List<activeLayoffSession> activeLayoffsList = new List<activeLayoffSession>();
-        public static MemoryEditor memoryEditor = new MemoryEditor();
+        public static baseAddressFinder memoryEditor = new baseAddressFinder();
         static async Task<Int32> getProgressFromPID(activeLayoffSession session)
         {
             MemorySearch _ms = new MemorySearch();
             IntPtr result = session.QtBase;
             try
             {
+                //store the base address of qtgui and avoid having to re-get it for the same session
                 if (result == IntPtr.Zero)
                 {
                     result = await memoryEditor.getBaseAddressOfDLL("QtGui4.dll", session.PID);
@@ -48,27 +49,23 @@ namespace SFM_MultiRender
                         session.QtBase = result;
                     }
                 }
-                
-                if (result == IntPtr.Zero)
-                {
-                    Console.WriteLine("still 0");
-                    return -1;
-                }
 
-                
+                //get progress % from process
                 _ms.openProcess(session.PID);
                 int[] progressPointerOffsets = new int[] { 0, 0x14, 0x18, 0x4, 0x134 };
                 result += 0x008b8d70;
                 byte[] percent = _ms.readMemoryPointerInt(result, progressPointerOffsets).Skip(-4).ToArray();
                 int finalPercent = BitConverter.ToInt32(percent, 0);
+
+                //flag to start displaying progress %
                 if (finalPercent > 0 && session.started == false)
                 {
                     session.started = true;
                 }
 
                 return finalPercent;
-            } catch (Exception ex)
-            {
+            } 
+            catch (Exception ex){
                 if (ex.HResult == -0x7FECEB00)
                 {
                     //either we cant access sfm's memory, or it was a session
@@ -76,38 +73,33 @@ namespace SFM_MultiRender
                     Console.WriteLine($"DONE: Error: {ex.Message}");
                     session.started = true;
                 }
-                return -2;
+                return PROCESS_ENDED;
             }
         }
 
 
-        public int launchLogPID(activeLayoffSession session)
+        public int launchAndGetPID(activeLayoffSession session)
         {
-
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                FileName = Properties.Settings.Default.sfmExe,
+                FileName = Properties.Settings.Default.sfmExe.Replace("\"", ""),
                 Arguments = Properties.Settings.Default.launchArgs+ session.layoffArg,
                 UseShellExecute = false,
                 CreateNoWindow = true
             };
-
             try
             {
                 Process proc = Process.Start(startInfo);
                 if (proc != null)
                 {
-                    SFM_MultiRender.ActiveForm.Controls["debugtxt"].Text += Environment.NewLine+"Started process. PID:" + proc.Id;
-                    //Console.WriteLine($"Started process. PID: {proc.Id}");
+                    mainForm.debugtxt.Text += Environment.NewLine+"Started process. PID:" + proc.Id;
                     return proc.Id;
                 }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                Console.WriteLine($"Error starting process: {ex.Message} hr: {ex.HResult}");
+                mainForm.debugtxt.Text += Environment.NewLine + "Couldn't start Session #"+ session.number+"!";
             }
-
-
             return -1;
         }
 
@@ -122,7 +114,7 @@ namespace SFM_MultiRender
                     activeLayoffSession session = activeLayoffsList[i];
                     int progress = await getProgressFromPID(session);
                     SessionCtrlGroup sessionTemp = (SessionCtrlGroup)sessions[session.number];
-                    if (session.started && progress == -2)
+                    if (session.started && progress == PROCESS_ENDED)
                     {
                         progress = 100;
                         activeLayoffsList.RemoveAt(i);
@@ -137,8 +129,8 @@ namespace SFM_MultiRender
                 
                 if (mainForm.autoHideCheckbox.Checked)
                 {
-                    hider.FakeMinimizeAllWindowsByPartialTitle(".dmx - Source Filmmaker");
-                    hider.FakeMinimizeAllWindowsByPartialTitle("Movie Layoff Progress");
+                    hider.fakeMinimize(".dmx - Source Filmmaker");
+                    hider.fakeMinimize("Movie Layoff Progress");
                 }
             }
             return true;
@@ -155,12 +147,32 @@ namespace SFM_MultiRender
                     "\" -sfm_layoffframerange " + session.startFrameValue + "," + session.endFrameValue +
                     " -sfm_autolayoff \"" + output + "\"";
                 activeLayoffSession temp = new activeLayoffSession(i, -1, arg);
-                temp.PID = launchLogPID(temp);
+                temp.PID = launchAndGetPID(temp);
                 activeLayoffsList.Add(temp);
                 i++;
             }
             
             return await sessionWatcher(sessions);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // SessionManager
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Name = "SessionManager";
+            this.Load += new System.EventHandler(this.SessionManager_Load);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void SessionManager_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

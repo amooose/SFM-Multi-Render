@@ -1,12 +1,9 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace SFM_MultiRender
 {
@@ -28,10 +25,6 @@ namespace SFM_MultiRender
             InitializeComponent();
 
         }
-        public bool autoHideCheckboxStatus
-        {
-            get => autoHideCheckbox.Checked;
-        }
 
         private void AddNewSessionCtrlGroup()
         {
@@ -50,7 +43,7 @@ namespace SFM_MultiRender
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            //TODO: reload last settings
         }
 
         private void globalFrameEnd_KeyPress(object sender, KeyPressEventArgs e)
@@ -63,10 +56,8 @@ namespace SFM_MultiRender
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
-
         public static List<(int Start, int End)> SplitRange(int start, int end, int sessionAmount)
         {
-
             int total = end - start + 1;
             int baseSize = total / sessionAmount;
             int remainder = total % sessionAmount;
@@ -129,50 +120,6 @@ namespace SFM_MultiRender
                 session.startFrameValue = a.ToString();
                 session.endFrameValue = b.ToString();
                 i++;
-            }
-        }
-
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
-
-        [DllImport("user32.dll")]
-        static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, bool bRepaint);
-
-        [DllImport("user32.dll")]
-        static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
-
-        [StructLayout(LayoutKind.Sequential)]
-        public struct RECT
-        {
-            public int Left, Top, Right, Bottom;
-        }
-
-        static void FakeMinimizeWindowByTitle(string windowTitle)
-        {
-            IntPtr hWnd = FindWindow(null, windowTitle);
-
-            if (hWnd == IntPtr.Zero)
-            {
-                Console.WriteLine("Window not found.");
-                return;
-            }
-
-            // Get current size
-            if (GetWindowRect(hWnd, out RECT rect))
-            {
-                int width = rect.Right - rect.Left;
-                int height = rect.Bottom - rect.Top;
-
-                // Move it just below the primary screen
-                int offscreenY = Screen.PrimaryScreen.WorkingArea.Bottom + 100;
-
-                MoveWindow(hWnd, rect.Left, offscreenY, width, height, true);
-                Console.WriteLine("Window moved off-screen.");
-            }
-            else
-            {
-                Console.WriteLine("Failed to get window rect.");
             }
         }
 
@@ -290,9 +237,5 @@ namespace SFM_MultiRender
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void debugtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

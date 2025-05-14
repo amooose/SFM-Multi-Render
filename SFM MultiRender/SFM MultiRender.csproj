@@ -88,7 +88,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryEditor.cs" />
+    <Compile Include="baseAddressFinder.cs" />
     <Compile Include="MemSearch.cs" />
     <Compile Include="optionsForm.cs">
       <SubType>Form</SubType>
@@ -126,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="SessionCtrlGroup.resx">
       <DependentUpon>SessionCtrlGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SessionManager.resx">
+      <DependentUpon>SessionManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

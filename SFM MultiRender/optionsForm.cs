@@ -25,10 +25,9 @@ namespace SFM_MultiRender
             launchOptionsTextbox.Text = Properties.Settings.Default.launchArgs;
             sfmExeTextbox.Text = Properties.Settings.Default.sfmExe;
             launchOptionsTextbox.Select(launchOptionsTextbox.Text.Length, 0);
-
         }
 
-        private void mentQButton8_Click(object sender, EventArgs e)
+        private void optionsOK_Click(object sender, EventArgs e)
         {;
             Properties.Settings.Default.launchArgs = launchOptionsTextbox.Text;
             Properties.Settings.Default.sfmExe = sfmExeTextbox.Text;
@@ -41,7 +40,7 @@ namespace SFM_MultiRender
             this.Close();
         }
 
-        private void mentQInfoBox3_MouseDown(object sender, MouseEventArgs e)
+        private void optionsHeader_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -50,9 +49,5 @@ namespace SFM_MultiRender
             }
         }
 
-        private void optionsForm_Load(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

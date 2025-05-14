@@ -59,31 +59,32 @@
             this.sessionLayoutList.AutoScroll = true;
             this.sessionLayoutList.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.sessionLayoutList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.sessionLayoutList.Location = new System.Drawing.Point(9, 94);
-            this.sessionLayoutList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sessionLayoutList.Location = new System.Drawing.Point(12, 116);
+            this.sessionLayoutList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sessionLayoutList.Name = "sessionLayoutList";
-            this.sessionLayoutList.Size = new System.Drawing.Size(353, 473);
+            this.sessionLayoutList.Size = new System.Drawing.Size(470, 582);
             this.sessionLayoutList.TabIndex = 0;
             // 
             // debugtxt
             // 
-            this.debugtxt.Location = new System.Drawing.Point(366, 94);
-            this.debugtxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.debugtxt.Location = new System.Drawing.Point(488, 116);
+            this.debugtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.debugtxt.Multiline = true;
             this.debugtxt.Name = "debugtxt";
-            this.debugtxt.Size = new System.Drawing.Size(127, 261);
+            this.debugtxt.Size = new System.Drawing.Size(168, 320);
             this.debugtxt.TabIndex = 7;
-            this.debugtxt.TextChanged += new System.EventHandler(this.debugtxt_TextChanged);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(174, 580);
+            this.button3.Location = new System.Drawing.Point(275, 751);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.button3.Size = new System.Drawing.Size(100, 28);
             this.button3.TabIndex = 28;
-            this.button3.Text = "button3";
+            this.button3.Text = "debug";
             this.button3.UseVisualStyleBackColor = true;
-
+            this.button3.Visible = false;
             // 
             // sessionCountVisual
             // 
@@ -92,11 +93,11 @@
             this.sessionCountVisual.ForeColor = System.Drawing.Color.Black;
             this.sessionCountVisual.HatchBrushSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
             this.sessionCountVisual.HatchBrushStyle = System.Drawing.Drawing2D.HatchStyle.DarkDownwardDiagonal;
-            this.sessionCountVisual.Location = new System.Drawing.Point(332, 58);
-            this.sessionCountVisual.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.sessionCountVisual.Location = new System.Drawing.Point(443, 71);
+            this.sessionCountVisual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sessionCountVisual.Maximum = 10;
             this.sessionCountVisual.Name = "sessionCountVisual";
-            this.sessionCountVisual.Size = new System.Drawing.Size(30, 35);
+            this.sessionCountVisual.Size = new System.Drawing.Size(40, 43);
             this.sessionCountVisual.TabIndex = 31;
             this.sessionCountVisual.UseHatchBrush = false;
             this.sessionCountVisual.Visible = false;
@@ -107,9 +108,10 @@
             this.launchButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.launchButton.ForeColor = System.Drawing.Color.White;
             this.launchButton.isSquare = false;
-            this.launchButton.Location = new System.Drawing.Point(367, 574);
+            this.launchButton.Location = new System.Drawing.Point(489, 706);
+            this.launchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.launchButton.Name = "launchButton";
-            this.launchButton.Size = new System.Drawing.Size(125, 58);
+            this.launchButton.Size = new System.Drawing.Size(167, 71);
             this.launchButton.TabIndex = 30;
             this.launchButton.Text = "Launch";
             this.launchButton.Underline = true;
@@ -125,9 +127,10 @@
             this.mentQButton6.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mentQButton6.ForeColor = System.Drawing.Color.White;
             this.mentQButton6.isSquare = true;
-            this.mentQButton6.Location = new System.Drawing.Point(499, -1);
+            this.mentQButton6.Location = new System.Drawing.Point(665, -1);
+            this.mentQButton6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mentQButton6.Name = "mentQButton6";
-            this.mentQButton6.Size = new System.Drawing.Size(43, 40);
+            this.mentQButton6.Size = new System.Drawing.Size(57, 49);
             this.mentQButton6.TabIndex = 25;
             this.mentQButton6.Text = "‒";
             this.mentQButton6.Underline = true;
@@ -142,9 +145,10 @@
             this.mentQButton3.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mentQButton3.ForeColor = System.Drawing.Color.White;
             this.mentQButton3.isSquare = true;
-            this.mentQButton3.Location = new System.Drawing.Point(542, -1);
+            this.mentQButton3.Location = new System.Drawing.Point(723, -1);
+            this.mentQButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mentQButton3.Name = "mentQButton3";
-            this.mentQButton3.Size = new System.Drawing.Size(43, 40);
+            this.mentQButton3.Size = new System.Drawing.Size(57, 49);
             this.mentQButton3.TabIndex = 24;
             this.mentQButton3.Text = "x";
             this.mentQButton3.Underline = true;
@@ -159,9 +163,10 @@
             this.removeSessionButton.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.removeSessionButton.ForeColor = System.Drawing.Color.White;
             this.removeSessionButton.isSquare = false;
-            this.removeSessionButton.Location = new System.Drawing.Point(67, 576);
+            this.removeSessionButton.Location = new System.Drawing.Point(89, 709);
+            this.removeSessionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.removeSessionButton.Name = "removeSessionButton";
-            this.removeSessionButton.Size = new System.Drawing.Size(52, 44);
+            this.removeSessionButton.Size = new System.Drawing.Size(69, 54);
             this.removeSessionButton.TabIndex = 23;
             this.removeSessionButton.Text = "-";
             this.removeSessionButton.Underline = true;
@@ -177,9 +182,10 @@
             this.addSessionButton.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addSessionButton.ForeColor = System.Drawing.Color.White;
             this.addSessionButton.isSquare = false;
-            this.addSessionButton.Location = new System.Drawing.Point(9, 576);
+            this.addSessionButton.Location = new System.Drawing.Point(12, 709);
+            this.addSessionButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addSessionButton.Name = "addSessionButton";
-            this.addSessionButton.Size = new System.Drawing.Size(52, 44);
+            this.addSessionButton.Size = new System.Drawing.Size(69, 54);
             this.addSessionButton.TabIndex = 22;
             this.addSessionButton.Text = "+";
             this.addSessionButton.Underline = true;
@@ -204,9 +210,10 @@
             this.mentQGroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.mentQGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.mentQGroupBox1.Icon = null;
-            this.mentQGroupBox1.Location = new System.Drawing.Point(367, 359);
+            this.mentQGroupBox1.Location = new System.Drawing.Point(489, 442);
+            this.mentQGroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mentQGroupBox1.Name = "mentQGroupBox1";
-            this.mentQGroupBox1.Size = new System.Drawing.Size(126, 208);
+            this.mentQGroupBox1.Size = new System.Drawing.Size(168, 256);
             this.mentQGroupBox1.TabIndex = 18;
             this.mentQGroupBox1.Text = "Duplication";
             this.mentQGroupBox1.UpperColor = System.Drawing.Color.Empty;
@@ -217,9 +224,10 @@
             this.dupeButton2.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dupeButton2.ForeColor = System.Drawing.Color.White;
             this.dupeButton2.isSquare = false;
-            this.dupeButton2.Location = new System.Drawing.Point(13, 150);
+            this.dupeButton2.Location = new System.Drawing.Point(17, 185);
+            this.dupeButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dupeButton2.Name = "dupeButton2";
-            this.dupeButton2.Size = new System.Drawing.Size(100, 44);
+            this.dupeButton2.Size = new System.Drawing.Size(133, 54);
             this.dupeButton2.TabIndex = 17;
             this.dupeButton2.Text = " Distribute\r\nAll Frames";
             this.dupeButton2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -236,9 +244,10 @@
             this.dupeButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dupeButton1.ForeColor = System.Drawing.Color.White;
             this.dupeButton1.isSquare = false;
-            this.dupeButton1.Location = new System.Drawing.Point(13, 42);
+            this.dupeButton1.Location = new System.Drawing.Point(17, 52);
+            this.dupeButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dupeButton1.Name = "dupeButton1";
-            this.dupeButton1.Size = new System.Drawing.Size(100, 44);
+            this.dupeButton1.Size = new System.Drawing.Size(133, 54);
             this.dupeButton1.TabIndex = 16;
             this.dupeButton1.Text = "       All use\r\nSession 1 Path";
             this.dupeButton1.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -251,39 +260,37 @@
             // 
             // globalFrameEnd
             // 
-            this.globalFrameEnd.Location = new System.Drawing.Point(45, 123);
-            this.globalFrameEnd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.globalFrameEnd.Location = new System.Drawing.Point(60, 151);
+            this.globalFrameEnd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.globalFrameEnd.Name = "globalFrameEnd";
-            this.globalFrameEnd.Size = new System.Drawing.Size(66, 22);
+            this.globalFrameEnd.Size = new System.Drawing.Size(87, 26);
             this.globalFrameEnd.TabIndex = 3;
             this.globalFrameEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.globalFrameEnd_KeyPress);
             // 
             // globalFrameStart
             // 
-            this.globalFrameStart.Location = new System.Drawing.Point(45, 100);
-            this.globalFrameStart.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.globalFrameStart.Location = new System.Drawing.Point(60, 123);
+            this.globalFrameStart.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.globalFrameStart.Name = "globalFrameStart";
-            this.globalFrameStart.Size = new System.Drawing.Size(66, 22);
+            this.globalFrameStart.Size = new System.Drawing.Size(87, 26);
             this.globalFrameStart.TabIndex = 4;
             this.globalFrameStart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.globalFrameStart_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 106);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(13, 130);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(38, 19);
             this.label1.TabIndex = 5;
             this.label1.Text = "Start";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 126);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(19, 155);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 13);
+            this.label2.Size = new System.Drawing.Size(32, 19);
             this.label2.TabIndex = 6;
             this.label2.Text = "End";
             // 
@@ -293,9 +300,10 @@
             this.launchOptionsButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.launchOptionsButton.ForeColor = System.Drawing.Color.White;
             this.launchOptionsButton.isSquare = false;
-            this.launchOptionsButton.Location = new System.Drawing.Point(287, 592);
+            this.launchOptionsButton.Location = new System.Drawing.Point(383, 729);
+            this.launchOptionsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.launchOptionsButton.Name = "launchOptionsButton";
-            this.launchOptionsButton.Size = new System.Drawing.Size(74, 41);
+            this.launchOptionsButton.Size = new System.Drawing.Size(99, 50);
             this.launchOptionsButton.TabIndex = 18;
             this.launchOptionsButton.Text = "SFM Launch\r\n   Options";
             this.launchOptionsButton.Underline = true;
@@ -311,9 +319,10 @@
             this.exitButton.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.ForeColor = System.Drawing.Color.White;
             this.exitButton.isSquare = true;
-            this.exitButton.Location = new System.Drawing.Point(466, -1);
+            this.exitButton.Location = new System.Drawing.Point(621, -1);
+            this.exitButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(40, 40);
+            this.exitButton.Size = new System.Drawing.Size(53, 49);
             this.exitButton.TabIndex = 32;
             this.exitButton.Text = "x";
             this.exitButton.Underline = true;
@@ -329,9 +338,10 @@
             this.minimizeButton.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.minimizeButton.ForeColor = System.Drawing.Color.White;
             this.minimizeButton.isSquare = true;
-            this.minimizeButton.Location = new System.Drawing.Point(429, -1);
+            this.minimizeButton.Location = new System.Drawing.Point(572, -1);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(40, 40);
+            this.minimizeButton.Size = new System.Drawing.Size(53, 49);
             this.minimizeButton.TabIndex = 33;
             this.minimizeButton.Text = "‒";
             this.minimizeButton.Underline = true;
@@ -354,9 +364,10 @@
             this.mentQInfoBox3.ImageTransparency = 255;
             this.mentQInfoBox3.isCenter = false;
             this.mentQInfoBox3.isClickable = false;
-            this.mentQInfoBox3.Location = new System.Drawing.Point(0, -4);
+            this.mentQInfoBox3.Location = new System.Drawing.Point(0, -5);
+            this.mentQInfoBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.mentQInfoBox3.Name = "mentQInfoBox3";
-            this.mentQInfoBox3.Size = new System.Drawing.Size(596, 60);
+            this.mentQInfoBox3.Size = new System.Drawing.Size(795, 74);
             this.mentQInfoBox3.TabIndex = 21;
             this.mentQInfoBox3.Text = "      SFM Multi-Render v1.0";
             this.mentQInfoBox3.Title = "";
@@ -372,10 +383,10 @@
             this.statusModule.EffectColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
             this.statusModule.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statusModule.ForeColor = System.Drawing.Color.White;
-            this.statusModule.Location = new System.Drawing.Point(9, 62);
-            this.statusModule.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.statusModule.Location = new System.Drawing.Point(12, 76);
+            this.statusModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.statusModule.Name = "statusModule";
-            this.statusModule.Size = new System.Drawing.Size(110, 27);
+            this.statusModule.Size = new System.Drawing.Size(147, 33);
             this.statusModule.Style = MentQ.Styles.Outlined;
             this.statusModule.TabIndex = 34;
             this.statusModule.Text = "Rendering! ";
@@ -392,19 +403,19 @@
             this.autoHideCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.autoHideCheckbox.Font = new System.Drawing.Font("Verdana", 7F);
             this.autoHideCheckbox.ForeColor = System.Drawing.Color.Black;
-            this.autoHideCheckbox.Location = new System.Drawing.Point(368, 638);
-            this.autoHideCheckbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.autoHideCheckbox.Location = new System.Drawing.Point(491, 785);
+            this.autoHideCheckbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.autoHideCheckbox.Name = "autoHideCheckbox";
-            this.autoHideCheckbox.Size = new System.Drawing.Size(136, 14);
+            this.autoHideCheckbox.Size = new System.Drawing.Size(166, 14);
             this.autoHideCheckbox.TabIndex = 35;
             this.autoHideCheckbox.Text = "Auto-hide SFM Sessions";
             this.autoHideCheckbox.UseVisualStyleBackColor = false;
             // 
             // SFM_MultiRender
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 659);
+            this.ClientSize = new System.Drawing.Size(672, 811);
             this.Controls.Add(this.autoHideCheckbox);
             this.Controls.Add(this.statusModule);
             this.Controls.Add(this.minimizeButton);
@@ -423,9 +434,9 @@
             this.Controls.Add(this.sessionLayoutList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "SFM_MultiRender";
-            this.Padding = new System.Windows.Forms.Padding(3, 64, 2, 2);
+            this.Padding = new System.Windows.Forms.Padding(4, 79, 3, 2);
             this.Text = "       SFM Multi-Render 1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.mentQGroupBox1.ResumeLayout(false);

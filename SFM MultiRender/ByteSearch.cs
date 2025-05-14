@@ -4,6 +4,8 @@ using System.Text;
 
 namespace SFM_MultiRender
 {
+    //used in memoryEditor, but not used by this program
+    //leaving here incase for future use
     public static class ByteSearch
     {
         private static int[] createTable(byte[] pattern)

@@ -8,25 +8,15 @@ using System.Threading.Tasks;
 
 namespace SFM_MultiRender
 {
-    internal class MemoryEditor
+    //Should really just incorporate this into MemSearch class.
+    internal class baseAddressFinder
     {
         // Import OpenProcess from kernel32.dll
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
 
-        // Import ReadProcessMemory from kernel32.dll
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
-
-        // Import CloseHandle
-        [DllImport("kernel32.dll", SetLastError = true)]
-        static extern bool CloseHandle(IntPtr hObject);
-        const int PROCESS_VM_READ = 0x0010;
-        const int PROCESS_QUERY_INFORMATION = 0x0400;
-
         public async Task<IntPtr> getBaseAddressOfDLL(string dllName, int PID)
         {
-            
             IntPtr dllAddress = IntPtr.Zero;
             while (dllAddress == IntPtr.Zero)
             {
@@ -40,10 +30,9 @@ namespace SFM_MultiRender
                             Console.WriteLine($"DLL: {module.ModuleName}");
                             Console.WriteLine($"Base Address: 0x{module.BaseAddress.ToInt64():X}");
                             dllAddress = module.BaseAddress;
-                            
                         }
                     }
-                    await Task.Delay(2000);
+                    await Task.Delay(1000);
                   }
                 catch (Exception ex)
                 {
@@ -52,7 +41,5 @@ namespace SFM_MultiRender
             }
             return dllAddress;
         }
-
-    
     }
 }

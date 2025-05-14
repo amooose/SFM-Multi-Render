@@ -36,14 +36,14 @@ namespace SFM_MultiRender
             public int Left, Top, Right, Bottom;
         }
 
-        public void FakeMinimizeAllWindowsByPartialTitle(string partialTitle)
+        public void fakeMinimize(string partialTitle)
         {
             EnumWindows((hWnd, lParam) =>
             {
-                if (!IsWindowVisible(hWnd)) return true;
+                if (!IsWindowVisible(hWnd)) { return true; };
 
                 int length = GetWindowTextLength(hWnd);
-                if (length == 0) return true;
+                if (length == 0) { return true; };
 
                 StringBuilder sb = new StringBuilder(length + 1);
                 GetWindowText(hWnd, sb, sb.Capacity);
@@ -60,7 +60,6 @@ namespace SFM_MultiRender
                         MoveWindow(hWnd, rect.Left, offscreenY, width, height, true);
                     }
                 }
-
                 return true;
             }, IntPtr.Zero);
         }

@@ -62,7 +62,7 @@
             this.mentQButton8.UnderlineSize = 4;
             this.mentQButton8.UseVisualStyleBackColor = false;
             this.mentQButton8.yPosAdjust = 0;
-            this.mentQButton8.Click += new System.EventHandler(this.mentQButton8_Click);
+            this.mentQButton8.Click += new System.EventHandler(this.optionsOK_Click);
             // 
             // mentQInfoBox3
             // 
@@ -88,7 +88,7 @@
             this.mentQInfoBox3.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.mentQInfoBox3.UnderlineSize = 4;
             this.mentQInfoBox3.yPosAdjust = 7;
-            this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mentQInfoBox3_MouseDown);
+            this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.optionsHeader_MouseDown);
             // 
             // exitButton
             // 
@@ -153,7 +153,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "optionsForm";
             this.Text = "optionsForm";
-            this.Load += new System.EventHandler(this.optionsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace SFM_MultiRender
 {
+    //cant remember for the life of me where I got this memory scanner class
+    //most reliable one I know of (prob cheat engine forums)
     public enum ProcessorArchitecture
     {
         X86 = 0,
