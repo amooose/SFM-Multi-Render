@@ -13,3 +13,6 @@ Your PC should be decent enough if you plan on running 4-10 copies, but I imagin
 5. In the duplication session, fill out the Start and end range. If I want to render frame 0-3000, type in 0 for start, then 3000 for end. Click Distribute All Frames to evenly spread the frames between the sessions.
 6. Optionally click the "Auto-hide SFM sessions", this will minimize every render window once it starts (Fake minimize, it moves it off screen).
 7. Launch your sessions. You can observe the progress all from the main window without needing to check SFM.
+
+![launch args](CXOB3qtGzv.png)
+![launch args](tVMiDzKBLC.png)
