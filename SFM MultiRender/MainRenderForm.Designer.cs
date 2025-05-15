@@ -1,6 +1,6 @@
 ﻿namespace SFM_MultiRender
 {
-    partial class SFM_MultiRender
+    partial class SFM_MultiRenderForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SFM_MultiRender));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SFM_MultiRenderForm));
             this.sessionLayoutList = new System.Windows.Forms.FlowLayoutPanel();
             this.debugtxt = new System.Windows.Forms.TextBox();
             this.debugButton = new System.Windows.Forms.Button();
@@ -51,8 +51,9 @@
             this.statusModule = new MentQ.MentQNotification();
             this.autoHideCheckbox = new MentQ.MentQCheckBox();
             this.creditLabel = new System.Windows.Forms.Label();
-            this.mentQInfoBox3 = new MentQ.MentQInfoBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.mainFormHeader = new MentQ.MentQInfoBox();
+            this.mentQButton1 = new MentQ.MentQButton();
             this.mentQGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             // debugButton
             // 
-            this.debugButton.Location = new System.Drawing.Point(166, 736);
+            this.debugButton.Location = new System.Drawing.Point(275, 710);
             this.debugButton.Margin = new System.Windows.Forms.Padding(4);
             this.debugButton.Name = "debugButton";
             this.debugButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -401,49 +402,68 @@
             this.creditLabel.TabIndex = 36;
             this.creditLabel.Text = "an0nymooose\'s";
             // 
-            // mentQInfoBox3
-            // 
-            this.mentQInfoBox3.AntiAliasImage = true;
-            this.mentQInfoBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
-            this.mentQInfoBox3.BackgroundImage = global::SFM_MultiRender.Properties.Resources.sfm_multi;
-            this.mentQInfoBox3.BackgroundImageLayout = MentQ.MentQInfoBox.Iconlayout.Scaled;
-            this.mentQInfoBox3.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mentQInfoBox3.ForeColor = System.Drawing.Color.White;
-            this.mentQInfoBox3.ImageContainer = false;
-            this.mentQInfoBox3.ImageContainerColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.mentQInfoBox3.ImageTransparency = 255;
-            this.mentQInfoBox3.isCenter = false;
-            this.mentQInfoBox3.isClickable = false;
-            this.mentQInfoBox3.Location = new System.Drawing.Point(0, -5);
-            this.mentQInfoBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.mentQInfoBox3.Name = "mentQInfoBox3";
-            this.mentQInfoBox3.Size = new System.Drawing.Size(795, 74);
-            this.mentQInfoBox3.TabIndex = 21;
-            this.mentQInfoBox3.Text = "      SFM Multi-Render v1.0";
-            this.mentQInfoBox3.Title = "";
-            this.mentQInfoBox3.Underline = MentQ.MentQInfoBox.UnderlineStyle.Full;
-            this.mentQInfoBox3.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.mentQInfoBox3.UnderlineSize = 4;
-            this.mentQInfoBox3.yPosAdjust = 7;
-            this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainRenderFormHeader_MouseDown);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::SFM_MultiRender.Properties.Resources.gear;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(617, 77);
+            this.pictureBox1.Location = new System.Drawing.Point(620, 76);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox1.Size = new System.Drawing.Size(36, 38);
             this.pictureBox1.TabIndex = 37;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.settingsButton_Click);
             // 
-            // SFM_MultiRender
+            // mainFormHeader
+            // 
+            this.mainFormHeader.AntiAliasImage = true;
+            this.mainFormHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.mainFormHeader.BackgroundImage = global::SFM_MultiRender.Properties.Resources.sfmicon;
+            this.mainFormHeader.BackgroundImageLayout = MentQ.MentQInfoBox.Iconlayout.Scaled;
+            this.mainFormHeader.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mainFormHeader.ForeColor = System.Drawing.Color.White;
+            this.mainFormHeader.ImageContainer = false;
+            this.mainFormHeader.ImageContainerColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.mainFormHeader.ImageTransparency = 255;
+            this.mainFormHeader.isCenter = false;
+            this.mainFormHeader.isClickable = false;
+            this.mainFormHeader.Location = new System.Drawing.Point(0, -5);
+            this.mainFormHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.mainFormHeader.Name = "mainFormHeader";
+            this.mainFormHeader.Size = new System.Drawing.Size(795, 74);
+            this.mainFormHeader.TabIndex = 21;
+            this.mainFormHeader.Text = "      SFM Multi-Render v1.0";
+            this.mainFormHeader.Title = "";
+            this.mainFormHeader.Underline = MentQ.MentQInfoBox.UnderlineStyle.Full;
+            this.mainFormHeader.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.mainFormHeader.UnderlineSize = 4;
+            this.mainFormHeader.yPosAdjust = 7;
+            this.mainFormHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainRenderFormHeader_MouseDown);
+            // 
+            // mentQButton1
+            // 
+            this.mentQButton1.BackColor = System.Drawing.Color.IndianRed;
+            this.mentQButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mentQButton1.ForeColor = System.Drawing.Color.White;
+            this.mentQButton1.isSquare = false;
+            this.mentQButton1.Location = new System.Drawing.Point(166, 734);
+            this.mentQButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.mentQButton1.Name = "mentQButton1";
+            this.mentQButton1.Size = new System.Drawing.Size(82, 29);
+            this.mentQButton1.TabIndex = 38;
+            this.mentQButton1.Text = "Clear all";
+            this.mentQButton1.Underline = true;
+            this.mentQButton1.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.mentQButton1.UnderlineSize = 4;
+            this.mentQButton1.UseVisualStyleBackColor = false;
+            this.mentQButton1.yPosAdjust = 0;
+            this.mentQButton1.Click += new System.EventHandler(this.mentQButton1_Click);
+            // 
+            // SFM_MultiRenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Controls.Add(this.mentQButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.creditLabel);
             this.Controls.Add(this.autoHideCheckbox);
@@ -458,14 +478,14 @@
             this.Controls.Add(this.mentQButton3);
             this.Controls.Add(this.removeSessionButton);
             this.Controls.Add(this.addSessionButton);
-            this.Controls.Add(this.mentQInfoBox3);
+            this.Controls.Add(this.mainFormHeader);
             this.Controls.Add(this.mentQGroupBox1);
             this.Controls.Add(this.debugtxt);
             this.Controls.Add(this.sessionLayoutList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "SFM_MultiRender";
+            this.Name = "SFM_MultiRenderForm";
             this.Padding = new System.Windows.Forms.Padding(4, 79, 3, 2);
             this.Text = "       SFM Multi-Render 1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -486,7 +506,7 @@
         private MentQ.MentQButton dupeButton1;
         private MentQ.MentQButton dupeButton2;
         private MentQ.MentQGroupBox mentQGroupBox1;
-        private MentQ.MentQInfoBox mentQInfoBox3;
+        private MentQ.MentQInfoBox mainFormHeader;
         private MentQ.MentQButton addSessionButton;
         private MentQ.MentQButton removeSessionButton;
         private MentQ.MentQButton mentQButton3;
@@ -503,6 +523,7 @@
         public MentQ.MentQNotification statusModule;
         private System.Windows.Forms.Label creditLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private MentQ.MentQButton mentQButton1;
     }
 }
 

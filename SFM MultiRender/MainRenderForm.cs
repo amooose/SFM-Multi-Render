@@ -4,11 +4,14 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using SFM_MultiRender.Properties;
+using System.Collections.Specialized;
+
 
 namespace SFM_MultiRender
 {
 
-    public partial class SFM_MultiRender : Form
+    public partial class SFM_MultiRenderForm : Form
     {
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
@@ -21,10 +24,10 @@ namespace SFM_MultiRender
         public static int SESSION_TOTAL = 0;
         windowHider windowHider = new windowHider();
 
-        public SFM_MultiRender()
+        public SFM_MultiRenderForm()
         {
             InitializeComponent();
-
+            
         }
 
         private void AddNewSessionCtrlGroup()
@@ -44,11 +47,20 @@ namespace SFM_MultiRender
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // stop the 1st session from being highlighted for no reason
+            this.BeginInvoke((MethodInvoker)delegate {
+                mainFormHeader.Focus(); 
+            });
             //TODO: reload last settings
-            if (Properties.Settings.Default.firstBoot)
+            if (Settings.Default.firstBoot || (!Settings.Default.firstBoot && Settings.Default.sfmGoodWindowPos.Equals("")))
             {
                 windowHider.firstRunBackupKey();
-                Properties.Settings.Default.firstBoot = false;
+                Settings.Default.firstBoot = false;
+
+            }
+            if (Settings.Default.rememberSessions && Settings.Default.savedSessionData != null)
+            {
+               loadSessions();
             }
              
         }
@@ -165,7 +177,7 @@ namespace SFM_MultiRender
                 MessageBox.Show("No sessions!");
                 return false;
             }
-            if (Properties.Settings.Default.sfmExe == "")
+            if (Settings.Default.sfmExe == "")
             {
                 MessageBox.Show("Exe path missing!");
                 return false;
@@ -235,9 +247,45 @@ namespace SFM_MultiRender
             optionsFormDialog.ShowDialog(this);
         }
 
+        private void loadSessions()
+        {
+            StringCollection temp = Settings.Default.savedSessionData;
+            int sessionCount = temp.Count /4; 
+            sessionCountVisual.Show();
+            for (int i = 0; i < sessionCount; i++)
+            {
+                AddNewSessionCtrlGroup();
+            }
+            foreach (SessionCtrlGroup session in sessionLayoutList.Controls)
+            {
+                session.startFrameValue=temp[0];
+                session.endFrameValue = temp[1];
+                session.projectFileValue = temp[2];
+                session.outputDirValue = temp[3];
+                for (int i = 0; i < 4; i++) temp.RemoveAt(0);
+            }
+
+        }
+        private void saveSessions()
+        {
+            Settings.Default.savedSessionData = new System.Collections.Specialized.StringCollection();
+            foreach (SessionCtrlGroup session in sessionLayoutList.Controls)
+            {
+                Settings.Default.savedSessionData.Add(session.startFrameValue);
+                Settings.Default.savedSessionData.Add(session.endFrameValue);
+                Settings.Default.savedSessionData.Add(session.projectFileValue);
+                Settings.Default.savedSessionData.Add(session.outputDirValue);
+            }
+            Settings.Default.Save();
+        }
         private void exitButton_Click(object sender, EventArgs e)
         {
             windowHider.restoreSFMWindowPostion("");
+            //lazy way to save, but itll do
+
+            if (Settings.Default.rememberSessions) {  
+                saveSessions(); 
+            }
             Application.Exit();
         }
 
@@ -248,7 +296,7 @@ namespace SFM_MultiRender
 
         private void autoHideCheckbox_CheckedChanged(object sender, EventArgs e)
         {
-            if (!Properties.Settings.Default.minWarningSingle && autoHideCheckbox.Checked) {
+            if (!Settings.Default.minWarningSingle && autoHideCheckbox.Checked) {
                 autoHideCheckbox.Checked = false;
                 MessageBox.Show("This fake minimizes SFM when rendering, which involves moving it below the visible screen. " +
                     "SFM itself remembers window position however, so launching SFM normally next time it will be invisible.\n\n" +
@@ -256,8 +304,8 @@ namespace SFM_MultiRender
                     "After this program closes, or a render batch is complete, it will restore the key and fix this. " +
                     "If for whatever reason your SFM is still invisible, please consult the steam guide (it really shouldnt happen though)\n\n" +
                     "This messagebox is a one time notice, please click the checkbox again to enable.");
-                Properties.Settings.Default.minWarningSingle = true;
-                Properties.Settings.Default.Save();
+                Settings.Default.minWarningSingle = true;
+                Settings.Default.Save();
             }
         }
 
@@ -284,10 +332,21 @@ namespace SFM_MultiRender
             windowHider.firstRunBackupKey();
         }
 
+
+
         private void settingsButton_Click(object sender, EventArgs e)
         {
             settingsForm settingsFormDialog = new settingsForm();
             settingsFormDialog.ShowDialog(this);
+        }
+
+        private void mentQButton1_Click(object sender, EventArgs e)
+        {
+            
+            sessionLayoutList.Controls.Clear();
+            SESSION_TOTAL = 0;
+            sessionCountVisual.Value = 0;
+            sessionCountVisual.Hide();
         }
     }
 }

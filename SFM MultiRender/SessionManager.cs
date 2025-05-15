@@ -101,7 +101,7 @@ namespace SFM_MultiRender
         }
 
 
-        static SFM_MultiRender mainForm = Application.OpenForms["SFM_MultiRender"] as SFM_MultiRender;
+        static SFM_MultiRenderForm mainForm = Application.OpenForms["SFM_MultiRender"] as SFM_MultiRenderForm;
         static async Task<bool> sessionWatcher(Control.ControlCollection sessions)
         {
             windowHider hider = new windowHider();

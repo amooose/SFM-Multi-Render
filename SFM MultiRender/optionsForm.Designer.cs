@@ -68,7 +68,7 @@
             // 
             this.mentQInfoBox3.AntiAliasImage = true;
             this.mentQInfoBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
-            this.mentQInfoBox3.BackgroundImage = global::SFM_MultiRender.Properties.Resources.sfm_multi;
+            this.mentQInfoBox3.BackgroundImage = global::SFM_MultiRender.Properties.Resources.sfmicon;
             this.mentQInfoBox3.BackgroundImageLayout = MentQ.MentQInfoBox.Iconlayout.Scaled;
             this.mentQInfoBox3.Font = new System.Drawing.Font("Verdana", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mentQInfoBox3.ForeColor = System.Drawing.Color.White;

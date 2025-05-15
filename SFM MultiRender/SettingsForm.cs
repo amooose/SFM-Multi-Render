@@ -23,6 +23,8 @@ namespace SFM_MultiRender
         public settingsForm()
         {
             InitializeComponent();
+            mentQButton1.Text = Properties.Settings.Default.rememberSessions ? "Remember Sessions [Enabled]" :
+                "Remember Sessions [Disabled]";
         }
 
         private void launchOptionsButton_Click(object sender, EventArgs e)
@@ -48,6 +50,7 @@ namespace SFM_MultiRender
         private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            Properties.Settings.Default.Save();
         }
 
         private void mentQInfoBox3_MouseDown(object sender, MouseEventArgs e)
@@ -57,6 +60,15 @@ namespace SFM_MultiRender
                 ReleaseCapture();
                 SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
             }
+        }
+
+        private void mentQButton1_Click_1(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.rememberSessions = !Properties.Settings.Default.rememberSessions;
+            Properties.Settings.Default.Save();
+            mentQButton1.Text = Properties.Settings.Default.rememberSessions ? "Remember Sessions [Enabled]" :
+                "Remember Sessions [Disabled]";
+            
         }
     }
 }

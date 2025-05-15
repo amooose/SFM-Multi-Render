@@ -16,7 +16,7 @@ namespace SFM_MultiRender
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SFM_MultiRender());
+            Application.Run(new SFM_MultiRenderForm());
         }
     }
 }

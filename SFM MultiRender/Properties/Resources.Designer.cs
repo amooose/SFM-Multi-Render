@@ -63,16 +63,6 @@ namespace SFM_MultiRender.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add {
-            get {
-                object obj = ResourceManager.GetObject("add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap gear {
             get {
                 object obj = ResourceManager.GetObject("gear", resourceCulture);
@@ -83,9 +73,9 @@ namespace SFM_MultiRender.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sfm_multi {
+        internal static System.Drawing.Bitmap sfmicon {
             get {
-                object obj = ResourceManager.GetObject("sfm multi", resourceCulture);
+                object obj = ResourceManager.GetObject("sfmicon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

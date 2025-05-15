@@ -82,5 +82,51 @@ namespace SFM_MultiRender.Properties {
                 this["firstBoot"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string session1DMX {
+            get {
+                return ((string)(this["session1DMX"]));
+            }
+            set {
+                this["session1DMX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection session1Output {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["session1Output"]));
+            }
+            set {
+                this["session1Output"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool rememberSessions {
+            get {
+                return ((bool)(this["rememberSessions"]));
+            }
+            set {
+                this["rememberSessions"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection savedSessionData {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["savedSessionData"]));
+            }
+            set {
+                this["savedSessionData"] = value;
+            }
+        }
     }
 }
