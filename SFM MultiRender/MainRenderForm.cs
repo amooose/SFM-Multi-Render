@@ -255,7 +255,8 @@ namespace SFM_MultiRender
         {
             StringCollection temp = Settings.Default.savedSessionData;
             int sessionCount = temp.Count /4; 
-            sessionCountVisual.Show();
+            if(sessionCount > 0) { sessionCountVisual.Show(); }
+            
             for (int i = 0; i < sessionCount; i++)
             {
                 AddNewSessionCtrlGroup();
