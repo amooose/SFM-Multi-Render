@@ -8,7 +8,7 @@ Your PC should be decent enough if you plan on running 4-10 copies, but I imagin
 # Instructions
 You likely need to run this program as administrator (more info in the notes section)
 1. Patch your launcher to enable multirun [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3481598701&searchtext=).  
-2. Set the launch options via the "SFM Launch Options", these are your launch options set in Steam.
+2. Set the launch options via the "SFM Launch Options", just copy your launch options set already in Steam.
 3. Create the amount of sessions you desire via the blue + button.
 4. Fill out Session 1's project file .dmx and output directory+image name (quotes or no quotes, doesnt matter)  
    Click "All use Session 1 Path" button to duplicate it to all other sessions..
