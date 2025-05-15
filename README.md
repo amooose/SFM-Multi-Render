@@ -15,8 +15,7 @@ Your PC should be decent enough if you plan on running 4-10 copies, but I imagin
 7. Optionally click the "Auto-hide SFM sessions", this will minimize every render window once it starts (Fake minimize, it moves it off screen).
 8. Launch your sessions. You can observe the progress all from the main window without needing to check SFM.
 
-![launch args](CXOB3qtGzv.png)
-![launch args](tVMiDzKBLC.png)
+![launch args](/mdAsset/s3xiblvoed.png)
 
 # Notes
 - This is in beta, I have not extensively tested this on a large amounts of projects.
