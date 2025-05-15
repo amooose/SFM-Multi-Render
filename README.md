@@ -12,7 +12,7 @@ You likely need to run this program as administrator (more info in the notes sec
 3. Create the amount of sessions you desire via the blue + button.
 4. Fill out Session 1's project file .dmx and output directory+image name (quotes or no quotes, doesnt matter)  
    Click "All use Session 1 Path" button to duplicate it to all other sessions..
-6. In the duplication session, fill out the Start and end range. If I want to render frame 0-3000, type in 0 for start, then 3000 for end. Click Distribute All Frames to evenly spread the frames between the sessions.
+6. In the duplication area, fill out the Start and End range. If I want to render frame 0-3000, type in 0 for start, then 3000 for end. Click Distribute All Frames to evenly spread the frames between the sessions.
 7. Optionally click the "Auto-hide SFM sessions", this will minimize every render window once it starts (Fake minimize, it moves it off screen).
 8. Launch your sessions. You can observe the progress all from the main window without needing to check SFM.
 
