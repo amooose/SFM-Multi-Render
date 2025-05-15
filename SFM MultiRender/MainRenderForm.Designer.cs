@@ -54,6 +54,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mainFormHeader = new MentQ.MentQInfoBox();
             this.mentQButton1 = new MentQ.MentQButton();
+            this.abortAllButton = new MentQ.MentQButton();
             this.mentQGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +72,7 @@
             // 
             // debugtxt
             // 
+            this.debugtxt.Enabled = false;
             this.debugtxt.Location = new System.Drawing.Point(488, 116);
             this.debugtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.debugtxt.Multiline = true;
@@ -459,11 +461,32 @@
             this.mentQButton1.yPosAdjust = 0;
             this.mentQButton1.Click += new System.EventHandler(this.clearAllSessions_Click);
             // 
+            // abortAllButton
+            // 
+            this.abortAllButton.BackColor = System.Drawing.Color.IndianRed;
+            this.abortAllButton.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.abortAllButton.ForeColor = System.Drawing.Color.White;
+            this.abortAllButton.isSquare = false;
+            this.abortAllButton.Location = new System.Drawing.Point(488, 706);
+            this.abortAllButton.Margin = new System.Windows.Forms.Padding(4);
+            this.abortAllButton.Name = "abortAllButton";
+            this.abortAllButton.Size = new System.Drawing.Size(167, 71);
+            this.abortAllButton.TabIndex = 39;
+            this.abortAllButton.Text = "Abort All";
+            this.abortAllButton.Underline = true;
+            this.abortAllButton.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.abortAllButton.UnderlineSize = 4;
+            this.abortAllButton.UseVisualStyleBackColor = false;
+            this.abortAllButton.Visible = false;
+            this.abortAllButton.yPosAdjust = -5;
+            this.abortAllButton.Click += new System.EventHandler(this.abortAllButton_Click);
+            // 
             // SFM_MultiRenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Controls.Add(this.abortAllButton);
             this.Controls.Add(this.mentQButton1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.creditLabel);
@@ -525,6 +548,7 @@
         private System.Windows.Forms.Label creditLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MentQ.MentQButton mentQButton1;
+        private MentQ.MentQButton abortAllButton;
     }
 }
 

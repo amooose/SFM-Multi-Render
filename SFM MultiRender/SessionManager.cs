@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -67,13 +68,39 @@ namespace SFM_MultiRender
                 {
                     //either we cant access sfm's memory, or it was a session
                     //with very little frames and it completed before we even got memory access, mark it as done.
-                    Console.WriteLine($"DONE: Error: {ex.Message}");
                     session.started = true;
                 }
                 return PROCESS_ENDED;
             }
         }
 
+        public static void sendDebugTxt(string txt)
+        {
+            mainForm.debugtxt.Text += txt + Environment.NewLine;
+        }
+
+        public void abortAllNow()
+        {
+            aborted = true;
+            for (int i = activeLayoffsList.Count - 1; i >= 0; i--)
+            {
+                activeLayoffSession session = activeLayoffsList[i];
+                try
+                {
+                    Process proc = Process.GetProcessById(session.PID);
+                    proc.Kill();
+                    sendDebugTxt("Session "+session.number+" killed.");
+                }
+                catch (ArgumentException)
+                {
+                    sendDebugTxt("Session " + session.number + "already killed.");
+                }
+                catch (Exception)
+                {
+                    sendDebugTxt("Session " + session.number + " ERROR, cannot kill.");
+                }
+            }
+        }
 
         public int launchAndGetPID(activeLayoffSession session)
         {
@@ -89,23 +116,24 @@ namespace SFM_MultiRender
                 Process proc = Process.Start(startInfo);
                 if (proc != null)
                 {
-                    mainForm.debugtxt.Text += Environment.NewLine + "Started process. PID:" + proc.Id;
+                    sendDebugTxt("[Started] Session "+(session.number+1)+". PID:" + proc.Id);
                     return proc.Id;
                 }
             }
             catch
             {
-                mainForm.debugtxt.Text += Environment.NewLine + "Couldn't start Session #" + session.number + "!";
+                sendDebugTxt("Couldn't start Session #" + session.number + "!");
             }
             return -1;
         }
 
-
+        private static bool aborted = false;
+        //hacky way to access the main form but oh well makes my life easier
         static SFM_MultiRenderForm mainForm = Application.OpenForms["SFM_MultiRenderForm"] as SFM_MultiRenderForm;
         static async Task<bool> sessionWatcher(Control.ControlCollection sessions)
         {
             windowHider hider = new windowHider();
-            while (activeLayoffsList.Count > 0)
+            while (activeLayoffsList.Count > 0 && !aborted)
             {
                 for (int i = activeLayoffsList.Count - 1; i >= 0; i--)
                 {
@@ -114,6 +142,7 @@ namespace SFM_MultiRender
                     SessionCtrlGroup sessionTemp = (SessionCtrlGroup)sessions[session.number];
                     if (session.started && progress == PROCESS_ENDED)
                     {
+                        sendDebugTxt("[Session "+(session.number+1)+"] Complete");
                         progress = 100;
                         activeLayoffsList.RemoveAt(i);
                     }
@@ -131,6 +160,7 @@ namespace SFM_MultiRender
                     hider.fakeMinimize("Movie Layoff Progress");
                 }
             }
+            aborted = false;
             return true;
         }
 

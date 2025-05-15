@@ -23,7 +23,7 @@ namespace SFM_MultiRender
 
         public static int SESSION_TOTAL = 0;
         windowHider windowHider = new windowHider();
-
+        SessionManager sessionManager;
         public SFM_MultiRenderForm()
         {
             InitializeComponent();
@@ -49,7 +49,8 @@ namespace SFM_MultiRender
         {
             // stop the 1st session from being highlighted for no reason
             this.BeginInvoke((MethodInvoker)delegate {
-                mainFormHeader.Focus(); 
+                mainFormHeader.Focus();
+                sessionManager = new SessionManager();
             });
             if (Settings.Default.autoHideSFM)
             {
@@ -222,8 +223,10 @@ namespace SFM_MultiRender
             dupeButton1.Enabled = val;
             dupeButton2.Enabled = val;
             launchOptionsButton.Enabled = val;
+            abortAllButton.Visible = !val;
         }
 
+        
         private async void launch_Click(object sender, EventArgs e)
         {
             if (!preLaunchCheck()){
@@ -235,8 +238,10 @@ namespace SFM_MultiRender
             statusModule.Text = "Rendering!";
             statusModule.BackColor = Color.Green;
             statusModule.Show();
-            SessionManager sessionManager = new SessionManager();
+            
             await sessionManager.launchSessions(sessionLayoutList.Controls);
+
+            //Done
             setControls(true);
             this.TopMost = false;
             statusModule.Text = "Done!";
@@ -352,6 +357,11 @@ namespace SFM_MultiRender
             SESSION_TOTAL = 0;
             sessionCountVisual.Value = 0;
             sessionCountVisual.Hide();
+        }
+
+        private void abortAllButton_Click(object sender, EventArgs e)
+        {
+            sessionManager.abortAllNow();
         }
     }
 }
