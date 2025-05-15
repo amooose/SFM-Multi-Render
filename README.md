@@ -6,7 +6,7 @@ This program splits your project up into multiple SFM sessions/processes, giving
 Your PC should be decent enough if you plan on running 4-10 copies, but I imagine lower end PCs may benefit from 2-3.
 
 # Instructions
-Run this program as administrator, refer to the notes section on why.
+You likely need to run this program as administrator (more info in the notes section)
 1. Patch your launcher to enable multirun [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3481598701&searchtext=).  
 2. Set the launch options via the "SFM Launch Options", these are your launch options set in Steam.
 3. Create the amount of sessions you desire via the blue + button.
