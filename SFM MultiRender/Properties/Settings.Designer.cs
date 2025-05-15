@@ -128,5 +128,17 @@ namespace SFM_MultiRender.Properties {
                 this["savedSessionData"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autoHideSFM {
+            get {
+                return ((bool)(this["autoHideSFM"]));
+            }
+            set {
+                this["autoHideSFM"] = value;
+            }
+        }
     }
 }

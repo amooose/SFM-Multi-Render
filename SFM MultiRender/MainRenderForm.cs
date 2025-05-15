@@ -51,8 +51,12 @@ namespace SFM_MultiRender
             this.BeginInvoke((MethodInvoker)delegate {
                 mainFormHeader.Focus(); 
             });
-            //TODO: reload last settings
-            if (Settings.Default.firstBoot || (!Settings.Default.firstBoot && Settings.Default.sfmGoodWindowPos.Equals("")))
+            if (Settings.Default.autoHideSFM)
+            {
+                autoHideCheckbox.Checked = true;
+            }
+                //TODO: reload last settings
+                if (Settings.Default.firstBoot || (!Settings.Default.firstBoot && Settings.Default.sfmGoodWindowPos.Equals("")))
             {
                 windowHider.firstRunBackupKey();
                 Settings.Default.firstBoot = false;
@@ -305,8 +309,9 @@ namespace SFM_MultiRender
                     "If for whatever reason your SFM is still invisible, please consult the steam guide (it really shouldnt happen though)\n\n" +
                     "This messagebox is a one time notice, please click the checkbox again to enable.");
                 Settings.Default.minWarningSingle = true;
-                Settings.Default.Save();
             }
+            if (autoHideCheckbox.Checked) { Settings.Default.autoHideSFM = true; }
+            Settings.Default.Save();
         }
 
         private void SFM_MultiRender_KeyDown(object sender, KeyEventArgs e)
