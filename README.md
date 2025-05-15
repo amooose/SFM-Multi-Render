@@ -6,6 +6,7 @@ This program splits your project up into multiple SFM sessions/processes, giving
 Your PC should be decent enough if you plan on running 4-10 copies, but I imagine lower end PCs may benefit from 2-3.
 
 # Instructions
+Run this program as administrator, refer to the notes section on why.
 1. Patch your launcher to enable multirun [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3481598701&searchtext=).  
 2. Set the launch options via the "SFM Launch Options", these are your launch options set in Steam.
 3. Create the amount of sessions you desire via the blue + button.
@@ -22,3 +23,4 @@ Your PC should be decent enough if you plan on running 4-10 copies, but I imagin
 - The auto-hide option modifies a registry key `Computer\HKEY_CURRENT_USER\SOFTWARE\Valve\SourceFilmmaker\Layouts_9\1\WindowPercentageGeometry`  
   This key is set by SFM every time is closes. So in our case, we "minimize" by hiding off screen, it will save that position, which we dont want.  
   The key is backed up, and restored every time you shut the program down or a render batch ends. In the odd event it didnt work, and you launch SFM normally and it is invisible, go to the Multi-Render settings via the gear, and click the button "Reset SFM window postion registry to default".
+- We need to run as admin to avoid issues spawning/closing processes, as well as avoid issues reading SFM's memory (We read the memory to get the layoff % complete number). You can try to run normally, but I can't say for sure it will work.
