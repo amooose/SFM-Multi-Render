@@ -406,6 +406,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::SFM_MultiRender.Properties.Resources.gear;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Location = new System.Drawing.Point(620, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 38);
@@ -456,7 +457,7 @@
             this.mentQButton1.UnderlineSize = 4;
             this.mentQButton1.UseVisualStyleBackColor = false;
             this.mentQButton1.yPosAdjust = 0;
-            this.mentQButton1.Click += new System.EventHandler(this.mentQButton1_Click);
+            this.mentQButton1.Click += new System.EventHandler(this.clearAllSessions_Click);
             // 
             // SFM_MultiRenderForm
             // 

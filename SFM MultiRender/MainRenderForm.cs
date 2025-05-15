@@ -345,9 +345,8 @@ namespace SFM_MultiRender
             settingsFormDialog.ShowDialog(this);
         }
 
-        private void mentQButton1_Click(object sender, EventArgs e)
+        private void clearAllSessions_Click(object sender, EventArgs e)
         {
-            
             sessionLayoutList.Controls.Clear();
             SESSION_TOTAL = 0;
             sessionCountVisual.Value = 0;
