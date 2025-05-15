@@ -14,9 +14,13 @@ namespace SFM_MultiRender
         [STAThread]
         static void Main()
         {
+            if (Environment.OSVersion.Version.Major >= 6) SetProcessDPIAware();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new SFM_MultiRenderForm());
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
     }
 }
