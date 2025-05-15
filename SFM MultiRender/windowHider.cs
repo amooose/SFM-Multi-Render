@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -35,6 +36,61 @@ namespace SFM_MultiRender
         {
             public int Left, Top, Right, Bottom;
         }
+
+
+        //Backup layout position of SFM on first run
+        string windowKeyPath = @"SOFTWARE\Valve\SourceFilmmaker\Layouts_9\1";
+        string keyValueName = "WindowPercentageGeometry"; // name of the value
+        public string stockInstallBackup = "@Rect(100 100 800 800)";
+        public void firstRunBackupKey()
+        {
+            bool gotKey = false;
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey(windowKeyPath))
+            {
+                if (key != null)
+                {
+                    object value = key.GetValue(keyValueName);
+                    if (value != null)
+                    {
+                        Properties.Settings.Default.sfmGoodWindowPos = value.ToString();
+                        Properties.Settings.Default.Save();
+                        gotKey = true;
+                    }
+                }
+            }
+
+            if (gotKey)
+            {
+                try{
+                    using (RegistryKey key = Registry.CurrentUser.CreateSubKey(windowKeyPath))
+                    {
+                        if (key != null)
+                        {
+                            key.SetValue("SMR_" + keyValueName,
+                                Properties.Settings.Default.sfmGoodWindowPos,
+                                RegistryValueKind.String);
+                        }
+                    }
+                }catch{}
+            }
+        }
+
+        //Restore layout1's position.
+        public void restoreSFMWindowPostion(string forceVal) {
+            string posVal = Properties.Settings.Default.sfmGoodWindowPos;
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(windowKeyPath, writable: true))
+                {
+                    if (key != null && (!posVal.Equals("") || !forceVal.Equals("")))
+                    {
+                        if (!forceVal.Equals("")) { posVal = forceVal; }
+                        key.SetValue(keyValueName, posVal, RegistryValueKind.String);
+                    }
+                }
+            }catch{}
+        }
+
 
         public void fakeMinimize(string partialTitle)
         {

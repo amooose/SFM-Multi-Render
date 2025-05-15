@@ -46,5 +46,41 @@ namespace SFM_MultiRender.Properties {
                 this["sfmExe"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool minWarningSingle {
+            get {
+                return ((bool)(this["minWarningSingle"]));
+            }
+            set {
+                this["minWarningSingle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string sfmGoodWindowPos {
+            get {
+                return ((string)(this["sfmGoodWindowPos"]));
+            }
+            set {
+                this["sfmGoodWindowPos"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool firstBoot {
+            get {
+                return ((bool)(this["firstBoot"]));
+            }
+            set {
+                this["firstBoot"] = value;
+            }
+        }
     }
 }

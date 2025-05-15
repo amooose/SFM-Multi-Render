@@ -108,6 +108,12 @@
       <DependentUpon>SessionCtrlGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="SessionManager.cs" />
+    <Compile Include="settingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="settingsForm.Designer.cs">
+      <DependentUpon>settingsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="windowHider.cs" />
     <EmbeddedResource Include="MainRenderForm.resx">
       <DependentUpon>MainRenderForm.cs</DependentUpon>
@@ -127,6 +133,9 @@
     </Compile>
     <EmbeddedResource Include="SessionCtrlGroup.resx">
       <DependentUpon>SessionCtrlGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="settingsForm.resx">
+      <DependentUpon>settingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -152,6 +161,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\gear.png" />
     <Content Include="sfm multi.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,6 +19,7 @@ namespace SFM_MultiRender
         public static extern bool ReleaseCapture();
 
         public static int SESSION_TOTAL = 0;
+        windowHider windowHider = new windowHider();
 
         public SFM_MultiRender()
         {
@@ -44,6 +45,12 @@ namespace SFM_MultiRender
         private void Form1_Load(object sender, EventArgs e)
         {
             //TODO: reload last settings
+            if (Properties.Settings.Default.firstBoot)
+            {
+                windowHider.firstRunBackupKey();
+                Properties.Settings.Default.firstBoot = false;
+            }
+             
         }
 
         private void globalFrameEnd_KeyPress(object sender, KeyPressEventArgs e)
@@ -218,6 +225,8 @@ namespace SFM_MultiRender
             this.TopMost = false;
             statusModule.Text = "Done!";
             statusModule.BackColor = SystemColors.Highlight;
+            windowHider.restoreSFMWindowPostion("");
+
         }
 
         private void sfmOptions_Click(object sender, EventArgs e)
@@ -228,6 +237,7 @@ namespace SFM_MultiRender
 
         private void exitButton_Click(object sender, EventArgs e)
         {
+            windowHider.restoreSFMWindowPostion("");
             Application.Exit();
         }
 
@@ -236,5 +246,48 @@ namespace SFM_MultiRender
             this.WindowState = FormWindowState.Minimized;
         }
 
+        private void autoHideCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!Properties.Settings.Default.minWarningSingle && autoHideCheckbox.Checked) {
+                autoHideCheckbox.Checked = false;
+                MessageBox.Show("This fake minimizes SFM when rendering, which involves moving it below the visible screen. " +
+                    "SFM itself remembers window position however, so launching SFM normally next time it will be invisible.\n\n" +
+                    "This program works around this issue by backing up the last known good position to restore it to, via it's registry key. " +
+                    "After this program closes, or a render batch is complete, it will restore the key and fix this. " +
+                    "If for whatever reason your SFM is still invisible, please consult the steam guide (it really shouldnt happen though)\n\n" +
+                    "This messagebox is a one time notice, please click the checkbox again to enable.");
+                Properties.Settings.Default.minWarningSingle = true;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void SFM_MultiRender_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12)
+            {
+                debugButton.Show();
+            }
+        }
+
+        private void debugtxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12)
+            {
+                debugButton.Show();
+            }
+        }
+
+        private void debugButton_Click(object sender, EventArgs e)
+        {
+            //Properties.Settings.Default.minWarningSingle = false;
+            windowHider windowHider = new windowHider();
+            windowHider.firstRunBackupKey();
+        }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            settingsForm settingsFormDialog = new settingsForm();
+            settingsFormDialog.ShowDialog(this);
+        }
     }
 }

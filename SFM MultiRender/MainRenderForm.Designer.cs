@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SFM_MultiRender));
             this.sessionLayoutList = new System.Windows.Forms.FlowLayoutPanel();
             this.debugtxt = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.debugButton = new System.Windows.Forms.Button();
             this.sessionCountVisual = new MentQ.MentQEllipticalProgress();
             this.launchButton = new MentQ.MentQButton();
             this.mentQButton6 = new MentQ.MentQButton();
@@ -48,11 +48,13 @@
             this.launchOptionsButton = new MentQ.MentQButton();
             this.exitButton = new MentQ.MentQButton();
             this.minimizeButton = new MentQ.MentQButton();
-            this.mentQInfoBox3 = new MentQ.MentQInfoBox();
             this.statusModule = new MentQ.MentQNotification();
             this.autoHideCheckbox = new MentQ.MentQCheckBox();
             this.creditLabel = new System.Windows.Forms.Label();
+            this.mentQInfoBox3 = new MentQ.MentQInfoBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.mentQGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // sessionLayoutList
@@ -74,18 +76,20 @@
             this.debugtxt.Name = "debugtxt";
             this.debugtxt.Size = new System.Drawing.Size(168, 320);
             this.debugtxt.TabIndex = 7;
+            this.debugtxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.debugtxt_KeyDown);
             // 
-            // button3
+            // debugButton
             // 
-            this.button3.Location = new System.Drawing.Point(166, 736);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.button3.Size = new System.Drawing.Size(100, 28);
-            this.button3.TabIndex = 28;
-            this.button3.Text = "debug";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
+            this.debugButton.Location = new System.Drawing.Point(166, 736);
+            this.debugButton.Margin = new System.Windows.Forms.Padding(4);
+            this.debugButton.Name = "debugButton";
+            this.debugButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.debugButton.Size = new System.Drawing.Size(100, 28);
+            this.debugButton.TabIndex = 28;
+            this.debugButton.Text = "debug";
+            this.debugButton.UseVisualStyleBackColor = true;
+            this.debugButton.Visible = false;
+            this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
             // sessionCountVisual
             // 
@@ -352,6 +356,51 @@
             this.minimizeButton.yPosAdjust = -5;
             this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
             // 
+            // statusModule
+            // 
+            this.statusModule.BackColor = System.Drawing.Color.Green;
+            this.statusModule.EffectColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.statusModule.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statusModule.ForeColor = System.Drawing.Color.White;
+            this.statusModule.Location = new System.Drawing.Point(12, 76);
+            this.statusModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.statusModule.Name = "statusModule";
+            this.statusModule.Size = new System.Drawing.Size(147, 33);
+            this.statusModule.Style = MentQ.Styles.Outlined;
+            this.statusModule.TabIndex = 34;
+            this.statusModule.Text = "Rendering! ";
+            this.statusModule.TextAlignment = MentQ.MentQNotification.TextAlign.Center;
+            this.statusModule.UnderlineSize = 6;
+            this.statusModule.UseWaitCursor = true;
+            this.statusModule.Visible = false;
+            // 
+            // autoHideCheckbox
+            // 
+            this.autoHideCheckbox.AutoSize = true;
+            this.autoHideCheckbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.autoHideCheckbox.Font = new System.Drawing.Font("Verdana", 7F);
+            this.autoHideCheckbox.ForeColor = System.Drawing.Color.Black;
+            this.autoHideCheckbox.Location = new System.Drawing.Point(491, 785);
+            this.autoHideCheckbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.autoHideCheckbox.Name = "autoHideCheckbox";
+            this.autoHideCheckbox.Size = new System.Drawing.Size(166, 14);
+            this.autoHideCheckbox.TabIndex = 35;
+            this.autoHideCheckbox.Text = "Auto-hide SFM Sessions";
+            this.autoHideCheckbox.UseVisualStyleBackColor = false;
+            this.autoHideCheckbox.CheckedChanged += new System.EventHandler(this.autoHideCheckbox_CheckedChanged);
+            // 
+            // creditLabel
+            // 
+            this.creditLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.creditLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.creditLabel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creditLabel.ForeColor = System.Drawing.Color.White;
+            this.creditLabel.Location = new System.Drawing.Point(72, 6);
+            this.creditLabel.Name = "creditLabel";
+            this.creditLabel.Size = new System.Drawing.Size(137, 18);
+            this.creditLabel.TabIndex = 36;
+            this.creditLabel.Text = "an0nymooose\'s";
+            // 
             // mentQInfoBox3
             // 
             this.mentQInfoBox3.AntiAliasImage = true;
@@ -378,57 +427,24 @@
             this.mentQInfoBox3.yPosAdjust = 7;
             this.mentQInfoBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainRenderFormHeader_MouseDown);
             // 
-            // statusModule
+            // pictureBox1
             // 
-            this.statusModule.BackColor = System.Drawing.Color.Green;
-            this.statusModule.EffectColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
-            this.statusModule.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.statusModule.ForeColor = System.Drawing.Color.White;
-            this.statusModule.Location = new System.Drawing.Point(12, 76);
-            this.statusModule.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.statusModule.Name = "statusModule";
-            this.statusModule.Size = new System.Drawing.Size(147, 33);
-            this.statusModule.Style = MentQ.Styles.Outlined;
-            this.statusModule.TabIndex = 34;
-            this.statusModule.Text = "Rendering! ";
-            this.statusModule.TextAlignment = MentQ.MentQNotification.TextAlign.Center;
-            this.statusModule.UnderlineSize = 6;
-            this.statusModule.UseWaitCursor = true;
-            this.statusModule.Visible = false;
-            // 
-            // autoHideCheckbox
-            // 
-            this.autoHideCheckbox.AutoSize = true;
-            this.autoHideCheckbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
-            this.autoHideCheckbox.Checked = true;
-            this.autoHideCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.autoHideCheckbox.Font = new System.Drawing.Font("Verdana", 7F);
-            this.autoHideCheckbox.ForeColor = System.Drawing.Color.Black;
-            this.autoHideCheckbox.Location = new System.Drawing.Point(491, 785);
-            this.autoHideCheckbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.autoHideCheckbox.Name = "autoHideCheckbox";
-            this.autoHideCheckbox.Size = new System.Drawing.Size(166, 14);
-            this.autoHideCheckbox.TabIndex = 35;
-            this.autoHideCheckbox.Text = "Auto-hide SFM Sessions";
-            this.autoHideCheckbox.UseVisualStyleBackColor = false;
-            // 
-            // creditLabel
-            // 
-            this.creditLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.creditLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
-            this.creditLabel.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.creditLabel.ForeColor = System.Drawing.Color.White;
-            this.creditLabel.Location = new System.Drawing.Point(72, 6);
-            this.creditLabel.Name = "creditLabel";
-            this.creditLabel.Size = new System.Drawing.Size(137, 18);
-            this.creditLabel.TabIndex = 36;
-            this.creditLabel.Text = "an0nymooose\'s";
+            this.pictureBox1.BackgroundImage = global::SFM_MultiRender.Properties.Resources.gear;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Location = new System.Drawing.Point(617, 77);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox1.TabIndex = 37;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // SFM_MultiRender
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.creditLabel);
             this.Controls.Add(this.autoHideCheckbox);
             this.Controls.Add(this.statusModule);
@@ -437,7 +453,7 @@
             this.Controls.Add(this.launchOptionsButton);
             this.Controls.Add(this.sessionCountVisual);
             this.Controls.Add(this.launchButton);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.debugButton);
             this.Controls.Add(this.mentQButton6);
             this.Controls.Add(this.mentQButton3);
             this.Controls.Add(this.removeSessionButton);
@@ -453,8 +469,10 @@
             this.Padding = new System.Windows.Forms.Padding(4, 79, 3, 2);
             this.Text = "       SFM Multi-Render 1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFM_MultiRender_KeyDown);
             this.mentQGroupBox1.ResumeLayout(false);
             this.mentQGroupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,7 +491,7 @@
         private MentQ.MentQButton removeSessionButton;
         private MentQ.MentQButton mentQButton3;
         private MentQ.MentQButton mentQButton6;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button debugButton;
         private MentQ.MentQButton launchButton;
         private MentQ.MentQEllipticalProgress sessionCountVisual;
         private MentQ.MentQButton launchOptionsButton;
@@ -484,6 +502,7 @@
         public MentQ.MentQCheckBox autoHideCheckbox;
         public MentQ.MentQNotification statusModule;
         private System.Windows.Forms.Label creditLabel;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
