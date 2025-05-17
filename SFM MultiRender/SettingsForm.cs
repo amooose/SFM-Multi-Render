@@ -25,6 +25,8 @@ namespace SFM_MultiRender
             InitializeComponent();
             mentQButton1.Text = Properties.Settings.Default.rememberSessions ? "Remember Sessions [Enabled]" :
                 "Remember Sessions [Disabled]";
+            coreSeqCheckbox.Checked = Properties.Settings.Default.sequenceCores;
+
         }
 
         private void launchOptionsButton_Click(object sender, EventArgs e)
@@ -69,6 +71,12 @@ namespace SFM_MultiRender
             mentQButton1.Text = Properties.Settings.Default.rememberSessions ? "Remember Sessions [Enabled]" :
                 "Remember Sessions [Disabled]";
             
+        }
+
+        private void autoHideCheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.sequenceCores = !Properties.Settings.Default.sequenceCores;
+            Properties.Settings.Default.Save();
         }
     }
 }

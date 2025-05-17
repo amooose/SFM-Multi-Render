@@ -4,8 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Management;
 
 namespace SFM_MultiRender
 {
@@ -102,7 +104,25 @@ namespace SFM_MultiRender
             }
         }
 
-        public int launchAndGetPID(activeLayoffSession session)
+        private static int nextCore = 0;
+        IntPtr GetAffinityMask(int coreIndex)
+        {
+            return (IntPtr)(1 << coreIndex);
+        }
+        public int getPhysCoreCount()
+        {
+            int physicalCoreCount = 0;
+
+            var searcher = new ManagementObjectSearcher("select NumberOfCores from Win32_Processor");
+            foreach (var item in searcher.Get())
+            {
+                physicalCoreCount += Convert.ToInt32(item["NumberOfCores"]);
+            }
+            return physicalCoreCount;
+        }
+
+
+    public async Task<int> launchAndGetPID(activeLayoffSession session)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -117,8 +137,26 @@ namespace SFM_MultiRender
                 if (proc != null)
                 {
                     sendDebugTxt("[Started] Session "+(session.number+1)+". PID:" + proc.Id);
+
+                    //manually sequence cores instead of letting windows
+                    if (Properties.Settings.Default.sequenceCores)
+                    {
+                        await Task.Delay(100); //give it time to start
+                        try
+                        {
+                            proc.ProcessorAffinity = GetAffinityMask(nextCore);
+                            sendDebugTxt("Set " + nextCore + " - " + GetAffinityMask(nextCore));
+                        }
+                        catch
+                        {
+                            sendDebugTxt("Couldnt set Session " + (session.number + 1) + " core.");
+                        }
+                        nextCore = (session.number + 1) > getPhysCoreCount() ? 0 : (session.number + 1);
+                    }
+
                     return proc.Id;
                 }
+                
             }
             catch
             {
@@ -126,7 +164,7 @@ namespace SFM_MultiRender
             }
             return -1;
         }
-
+        
         private static bool aborted = false;
         //hacky way to access the main form but oh well makes my life easier
         static SFM_MultiRenderForm mainForm = Application.OpenForms["SFM_MultiRenderForm"] as SFM_MultiRenderForm;
@@ -160,6 +198,7 @@ namespace SFM_MultiRender
                     hider.fakeMinimize("Movie Layoff Progress");
                 }
             }
+            nextCore = 0;
             aborted = false;
             return true;
         }
@@ -175,7 +214,7 @@ namespace SFM_MultiRender
                     "\" -sfm_layoffframerange " + session.startFrameValue + "," + session.endFrameValue +
                     " -sfm_autolayoff \"" + output + "\"";
                 activeLayoffSession temp = new activeLayoffSession(i, -1, arg);
-                temp.PID = launchAndGetPID(temp);
+                temp.PID = await launchAndGetPID(temp);
                 activeLayoffsList.Add(temp);
                 i++;
             }

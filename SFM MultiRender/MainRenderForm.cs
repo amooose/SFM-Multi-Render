@@ -340,7 +340,8 @@ namespace SFM_MultiRender
         {
             //Properties.Settings.Default.minWarningSingle = false;
             windowHider windowHider = new windowHider();
-            windowHider.firstRunBackupKey();
+            IntPtr a = (IntPtr)(1 << 4);
+            MessageBox.Show(a.ToString());
         }
 
 

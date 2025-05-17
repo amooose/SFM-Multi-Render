@@ -140,5 +140,17 @@ namespace SFM_MultiRender.Properties {
                 this["autoHideSFM"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool sequenceCores {
+            get {
+                return ((bool)(this["sequenceCores"]));
+            }
+            set {
+                this["sequenceCores"] = value;
+            }
+        }
     }
 }

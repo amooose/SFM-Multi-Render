@@ -91,7 +91,6 @@
             this.debugButton.TabIndex = 28;
             this.debugButton.Text = "debug";
             this.debugButton.UseVisualStyleBackColor = true;
-            this.debugButton.Visible = false;
             this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
             // sessionCountVisual

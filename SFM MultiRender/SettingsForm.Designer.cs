@@ -35,6 +35,7 @@
             this.exitButton = new MentQ.MentQButton();
             this.mentQInfoBox3 = new MentQ.MentQInfoBox();
             this.mentQButton1 = new MentQ.MentQButton();
+            this.coreSeqCheckbox = new MentQ.MentQCheckBox();
             this.SuspendLayout();
             // 
             // launchOptionsButton
@@ -139,12 +140,28 @@
             this.mentQButton1.yPosAdjust = 0;
             this.mentQButton1.Click += new System.EventHandler(this.mentQButton1_Click_1);
             // 
+            // coreSeqCheckbox
+            // 
+            this.coreSeqCheckbox.AutoSize = true;
+            this.coreSeqCheckbox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(25)))), ((int)(((byte)(105)))), ((int)(((byte)(205)))));
+            this.coreSeqCheckbox.Font = new System.Drawing.Font("Verdana", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.coreSeqCheckbox.ForeColor = System.Drawing.Color.Black;
+            this.coreSeqCheckbox.Location = new System.Drawing.Point(123, 275);
+            this.coreSeqCheckbox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.coreSeqCheckbox.Name = "coreSeqCheckbox";
+            this.coreSeqCheckbox.Size = new System.Drawing.Size(213, 14);
+            this.coreSeqCheckbox.TabIndex = 37;
+            this.coreSeqCheckbox.Text = "Sequentially distribute cores";
+            this.coreSeqCheckbox.UseVisualStyleBackColor = false;
+            this.coreSeqCheckbox.CheckedChanged += new System.EventHandler(this.autoHideCheckbox_CheckedChanged);
+            // 
             // settingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(473, 279);
+            this.ClientSize = new System.Drawing.Size(473, 310);
+            this.Controls.Add(this.coreSeqCheckbox);
             this.Controls.Add(this.mentQButton1);
             this.Controls.Add(this.exitButton);
             this.Controls.Add(this.mentQInfoBox3);
@@ -155,6 +172,7 @@
             this.Text = "SettingsForm";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -166,5 +184,6 @@
         private MentQ.MentQButton exitButton;
         private MentQ.MentQInfoBox mentQInfoBox3;
         private MentQ.MentQButton mentQButton1;
+        public MentQ.MentQCheckBox coreSeqCheckbox;
     }
 }
