@@ -23,8 +23,14 @@ You likely need to run this program as administrator (more info in the notes sec
 ![launch args](/mdAsset/s3xiblvoed.png)
 
 # Notes
-- This is in beta, I have not extensively tested this on a large amounts of projects.
+- This is in beta, I have not extensively tested this on a large amounts of projects. Again, if your project is massive and you blasted your settings with stuff like shadowmapres 8192, this program cant do much for you since your VRAM might be maxed.
+- The frame between sessions will produce a ghost frame most of the time. This is just SFM being SFM. Go back into SFM and just re-render that frame, and replace it in your output folder.
+- You can choose to manually assign each session to a different core, or let the Winows OS Scheduler automatically handle it, via the "Sequentially distribute cores" option in the settings. Which is faster? I don't know yet (let me know if anyone does a comparsion please)
+- If you use the DXVK .dll for SFM and have issues, try disabling it, it may save you some VRAM.  
+I'm able to render 4k projects with DXVK however (6 sessions 90% max my VRAM)
+- If you use custom layouts and not "default/layout 1" in SFM, the autohide option will work, but it wont restore your SFM window position on re-launch. If your SFM is invisible, click it on the taskbar and press ALT+Space, then maximize.
 - The auto-hide option modifies a registry key `Computer\HKEY_CURRENT_USER\SOFTWARE\Valve\SourceFilmmaker\Layouts_9\1\WindowPercentageGeometry`  
-  This key is set by SFM every time is closes. So in our case, we "minimize" by hiding off screen, it will save that position, which we dont want.  
-  The key is backed up, and restored every time you shut the program down or a render batch ends. In the odd event it didnt work, and you launch SFM normally and it is invisible, go to the Multi-Render settings via the gear, and click the button "Reset SFM window postion registry to default".
+This key is set by SFM every time is closes. So in our case, we "minimize" by hiding off screen, it will save that position, which we dont want (we fake minimize because actual minimizing messes up the render).
+The key is backed up, and restored every time you shut the program down or a render batch ends. In the odd event it didnt work, and you launch SFM normally and it is invisible, go to the Multi-Render settings via the gear, and click the button "Reset SFM window postion registry to default".
 - We need to run as admin to avoid issues spawning/closing processes, as well as avoid issues reading SFM's memory (We read the memory to get the layoff % complete number). You can try to run normally, but I can't say for sure it will work.
+
