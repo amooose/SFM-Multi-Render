@@ -174,15 +174,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.TextBox startFrame;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox endFrame;
-        private System.Windows.Forms.TextBox projectFile;
-        private System.Windows.Forms.TextBox outputDir;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private MentQ.MentQGroupBox sessionGroupBox;
         public MentQ.MentQProgressBar layoffProgressBar;
+        public System.Windows.Forms.TextBox startFrame;
+        public System.Windows.Forms.TextBox endFrame;
+        public System.Windows.Forms.TextBox projectFile;
+        public System.Windows.Forms.TextBox outputDir;
+        public MentQ.MentQGroupBox sessionGroupBox;
     }
 }

@@ -78,7 +78,9 @@ namespace SFM_MultiRender
 
         public static void sendDebugTxt(string txt)
         {
-            mainForm.debugtxt.Text += txt + Environment.NewLine;
+            mainForm.debugtxt.Invoke((MethodInvoker)(() => {
+                mainForm.debugtxt.AppendText(txt + Environment.NewLine);
+            }));
         }
 
         public void abortAllNow()
@@ -109,6 +111,7 @@ namespace SFM_MultiRender
         {
             return (IntPtr)(1 << coreIndex);
         }
+
         public int getPhysCoreCount()
         {
             int physicalCoreCount = 0;
@@ -134,32 +137,25 @@ namespace SFM_MultiRender
             try
             {
                 Process proc = Process.Start(startInfo);
-                if (proc != null)
-                {
+                if (proc != null){
                     sendDebugTxt("[Started] Session "+(session.number+1)+". PID:" + proc.Id);
-
                     //manually sequence cores instead of letting windows
                     if (Properties.Settings.Default.sequenceCores)
                     {
                         await Task.Delay(100); //give it time to start
-                        try
-                        {
+                        try{
                             proc.ProcessorAffinity = GetAffinityMask(nextCore);
-                            sendDebugTxt("Set " + nextCore + " - " + GetAffinityMask(nextCore));
+                            sendDebugTxt("Set Session "+(session.number+1)+" core:" + nextCore);
                         }
-                        catch
-                        {
+                        catch{
                             sendDebugTxt("Couldnt set Session " + (session.number + 1) + " core.");
                         }
                         nextCore = (session.number + 1) > getPhysCoreCount() ? 0 : (session.number + 1);
                     }
-
                     return proc.Id;
-                }
-                
+                }         
             }
-            catch
-            {
+            catch{
                 sendDebugTxt("Couldn't start Session #" + session.number + "!");
             }
             return -1;
@@ -171,12 +167,14 @@ namespace SFM_MultiRender
         static async Task<bool> sessionWatcher(Control.ControlCollection sessions)
         {
             windowHider hider = new windowHider();
+            bool releasedTopMost = false;
             while (activeLayoffsList.Count > 0 && !aborted)
             {
                 for (int i = activeLayoffsList.Count - 1; i >= 0; i--)
                 {
+                    int progCount = 0;
                     activeLayoffSession session = activeLayoffsList[i];
-                    int progress = await getProgressFromPID(session);
+                    int progress = await Task.Run(() => getProgressFromPID(session));
                     SessionCtrlGroup sessionTemp = (SessionCtrlGroup)sessions[session.number];
                     if (session.started && progress == PROCESS_ENDED)
                     {
@@ -186,12 +184,25 @@ namespace SFM_MultiRender
                     }
                     if (progress > -1 && progress <= 100)
                     {
-                        sessionTemp.layoffProgressBar.Value = progress;
-                        sessionTemp.layoffProgressBar.Text = progress + "%";
+                        progCount++;
+                        sessionTemp.layoffProgressBar.Invoke((MethodInvoker)(() =>
+                        {
+                            sessionTemp.layoffProgressBar.Value = progress;
+                            sessionTemp.layoffProgressBar.Text = progress + "%";
+                        }));
+                    }
+                    //auto disable topmost when everything has been minimized.
+                    if (!releasedTopMost && mainForm.autoHideCheckbox.Checked){
+                        if(activeLayoffsList.Count(x => x.started) == activeLayoffsList.Count){
+                            releasedTopMost = true;
+                            mainForm.Invoke((MethodInvoker)(() => {
+                                mainForm.TopMost = false;
+                            }));
+                        }
                     }
                 }
                 await Task.Delay(1000);
-
+                
                 if (mainForm.autoHideCheckbox.Checked)
                 {
                     hider.fakeMinimize(".dmx - Source Filmmaker");
@@ -219,7 +230,7 @@ namespace SFM_MultiRender
                 i++;
             }
 
-            return await sessionWatcher(sessions);
+            return await Task.Run(() => sessionWatcher(sessions));
         }
     }
 

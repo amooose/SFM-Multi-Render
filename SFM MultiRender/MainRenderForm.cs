@@ -22,6 +22,7 @@ namespace SFM_MultiRender
         public static extern bool ReleaseCapture();
 
         public static int SESSION_TOTAL = 0;
+        public static bool RENDERING_NOW = false;
         windowHider windowHider = new windowHider();
         SessionManager sessionManager;
         public SFM_MultiRenderForm()
@@ -44,7 +45,19 @@ namespace SFM_MultiRender
             sessionCountVisual.Value = SESSION_TOTAL > 10 ? 10 : SESSION_TOTAL;
             sessionCountVisual.Text = SESSION_TOTAL.ToString();
         }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F12:
+                    debugBtn.Visible = !debugBtn.Visible;
+                    break;
+                default:
+                    break;
+            }
 
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             // stop the 1st session from being highlighted for no reason
@@ -65,7 +78,7 @@ namespace SFM_MultiRender
             }
             if (Settings.Default.rememberSessions && Settings.Default.savedSessionData != null)
             {
-               loadSessions();
+               loadSavedSessions();
             }
              
         }
@@ -213,10 +226,10 @@ namespace SFM_MultiRender
             }
         }
 
+
         public void setControls(bool val)
         {
-            if (!val) { launchButton.BackColor = Color.LightSlateGray; }
-            else { launchButton.BackColor = Color.MediumSeaGreen; }
+            RENDERING_NOW=val;
             launchButton.Enabled = val;
             removeSessionButton.Enabled = val;
             addSessionButton.Enabled = val;
@@ -224,9 +237,16 @@ namespace SFM_MultiRender
             dupeButton2.Enabled = val;
             launchOptionsButton.Enabled = val;
             abortAllButton.Visible = !val;
+            clearAllButton.Enabled = val;
+            dupeGroupBox.Enabled = val;
+            settingsBtn.Enabled = val;
+            foreach (SessionCtrlGroup session in sessionLayoutList.Controls)
+            {
+                session.sessionGroupBox.Enabled = val;
+            }
         }
 
-        
+
         private async void launch_Click(object sender, EventArgs e)
         {
             if (!preLaunchCheck()){
@@ -239,6 +259,7 @@ namespace SFM_MultiRender
             statusModule.BackColor = Color.Green;
             statusModule.Show();
             
+            //launch and watch all sessions
             await sessionManager.launchSessions(sessionLayoutList.Controls);
 
             //Done
@@ -256,7 +277,7 @@ namespace SFM_MultiRender
             optionsFormDialog.ShowDialog(this);
         }
 
-        private void loadSessions()
+        private void loadSavedSessions()
         {
             StringCollection temp = Settings.Default.savedSessionData;
             int sessionCount = temp.Count /4; 
@@ -276,7 +297,7 @@ namespace SFM_MultiRender
             }
 
         }
-        private void saveSessions()
+        private void saveSessionsToSettings()
         {
             Settings.Default.savedSessionData = new System.Collections.Specialized.StringCollection();
             foreach (SessionCtrlGroup session in sessionLayoutList.Controls)
@@ -294,7 +315,7 @@ namespace SFM_MultiRender
             //lazy way to save, but itll do
 
             if (Settings.Default.rememberSessions) {  
-                saveSessions(); 
+                saveSessionsToSettings(); 
             }
             Application.Exit();
         }
@@ -312,39 +333,14 @@ namespace SFM_MultiRender
                     "SFM itself remembers window position however, so launching SFM normally next time it will be invisible.\n\n" +
                     "This program works around this issue by backing up the last known good position to restore it to, via it's registry key. " +
                     "After this program closes, or a render batch is complete, it will restore the key and fix this. " +
-                    "If for whatever reason your SFM is still invisible, please consult the steam guide (it really shouldnt happen though)\n\n" +
+                    "If for whatever reason your SFM is still invisible, please consult the steam guide (it really shouldnt happen though)\n" +
+                    "This also only works with Layout 1/Default layout in SFM.\n\n"+
                     "This messagebox is a one time notice, please click the checkbox again to enable.");
                 Settings.Default.minWarningSingle = true;
             }
             if (autoHideCheckbox.Checked) { Settings.Default.autoHideSFM = true; }
             Settings.Default.Save();
         }
-
-        private void SFM_MultiRender_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F12)
-            {
-                debugButton.Show();
-            }
-        }
-
-        private void debugtxt_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F12)
-            {
-                debugButton.Show();
-            }
-        }
-
-        private void debugButton_Click(object sender, EventArgs e)
-        {
-            //Properties.Settings.Default.minWarningSingle = false;
-            windowHider windowHider = new windowHider();
-            IntPtr a = (IntPtr)(1 << 4);
-            MessageBox.Show(a.ToString());
-        }
-
-
 
         private void settingsButton_Click(object sender, EventArgs e)
         {
@@ -363,6 +359,23 @@ namespace SFM_MultiRender
         private void abortAllButton_Click(object sender, EventArgs e)
         {
             sessionManager.abortAllNow();
+        }
+
+        private void debugBtn_Click(object sender, EventArgs e)
+        {
+            this.TopMost = !this.TopMost;
+        }
+
+
+
+        private void settingsBtn_MouseLeave(object sender, EventArgs e)
+        {
+            settingsBtn.BackColor = SystemColors.Control;
+        }
+
+        private void settingsBtn_MouseEnter(object sender, EventArgs e)
+        {
+            settingsBtn.BackColor = !RENDERING_NOW ? SystemColors.ControlDark: SystemColors.Control;
         }
     }
 }

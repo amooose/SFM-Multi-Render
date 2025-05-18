@@ -31,14 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SFM_MultiRenderForm));
             this.sessionLayoutList = new System.Windows.Forms.FlowLayoutPanel();
             this.debugtxt = new System.Windows.Forms.TextBox();
-            this.debugButton = new System.Windows.Forms.Button();
             this.sessionCountVisual = new MentQ.MentQEllipticalProgress();
             this.launchButton = new MentQ.MentQButton();
             this.mentQButton6 = new MentQ.MentQButton();
             this.mentQButton3 = new MentQ.MentQButton();
             this.removeSessionButton = new MentQ.MentQButton();
             this.addSessionButton = new MentQ.MentQButton();
-            this.mentQGroupBox1 = new MentQ.MentQGroupBox();
+            this.dupeGroupBox = new MentQ.MentQGroupBox();
             this.dupeButton2 = new MentQ.MentQButton();
             this.dupeButton1 = new MentQ.MentQButton();
             this.globalFrameEnd = new System.Windows.Forms.TextBox();
@@ -51,12 +50,13 @@
             this.statusModule = new MentQ.MentQNotification();
             this.autoHideCheckbox = new MentQ.MentQCheckBox();
             this.creditLabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.settingsBtn = new System.Windows.Forms.PictureBox();
             this.mainFormHeader = new MentQ.MentQInfoBox();
-            this.mentQButton1 = new MentQ.MentQButton();
+            this.clearAllButton = new MentQ.MentQButton();
             this.abortAllButton = new MentQ.MentQButton();
-            this.mentQGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.debugBtn = new MentQ.MentQButton();
+            this.dupeGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // sessionLayoutList
@@ -77,21 +77,9 @@
             this.debugtxt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.debugtxt.Multiline = true;
             this.debugtxt.Name = "debugtxt";
+            this.debugtxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.debugtxt.Size = new System.Drawing.Size(168, 320);
             this.debugtxt.TabIndex = 7;
-            this.debugtxt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.debugtxt_KeyDown);
-            // 
-            // debugButton
-            // 
-            this.debugButton.Location = new System.Drawing.Point(275, 710);
-            this.debugButton.Margin = new System.Windows.Forms.Padding(4);
-            this.debugButton.Name = "debugButton";
-            this.debugButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.debugButton.Size = new System.Drawing.Size(100, 28);
-            this.debugButton.TabIndex = 28;
-            this.debugButton.Text = "debug";
-            this.debugButton.UseVisualStyleBackColor = true;
-            this.debugButton.Click += new System.EventHandler(this.debugButton_Click);
             // 
             // sessionCountVisual
             // 
@@ -202,28 +190,28 @@
             this.addSessionButton.yPosAdjust = -5;
             this.addSessionButton.Click += new System.EventHandler(this.addSession_Click);
             // 
-            // mentQGroupBox1
+            // dupeGroupBox
             // 
-            this.mentQGroupBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.mentQGroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.mentQGroupBox1.Closable = false;
-            this.mentQGroupBox1.Closed = false;
-            this.mentQGroupBox1.Controls.Add(this.dupeButton2);
-            this.mentQGroupBox1.Controls.Add(this.dupeButton1);
-            this.mentQGroupBox1.Controls.Add(this.globalFrameEnd);
-            this.mentQGroupBox1.Controls.Add(this.globalFrameStart);
-            this.mentQGroupBox1.Controls.Add(this.label1);
-            this.mentQGroupBox1.Controls.Add(this.label2);
-            this.mentQGroupBox1.Font = new System.Drawing.Font("Segoe UI", 8.25F);
-            this.mentQGroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
-            this.mentQGroupBox1.Icon = null;
-            this.mentQGroupBox1.Location = new System.Drawing.Point(489, 442);
-            this.mentQGroupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.mentQGroupBox1.Name = "mentQGroupBox1";
-            this.mentQGroupBox1.Size = new System.Drawing.Size(168, 256);
-            this.mentQGroupBox1.TabIndex = 18;
-            this.mentQGroupBox1.Text = "Duplication";
-            this.mentQGroupBox1.UpperColor = System.Drawing.Color.Empty;
+            this.dupeGroupBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.dupeGroupBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.dupeGroupBox.Closable = false;
+            this.dupeGroupBox.Closed = false;
+            this.dupeGroupBox.Controls.Add(this.dupeButton2);
+            this.dupeGroupBox.Controls.Add(this.dupeButton1);
+            this.dupeGroupBox.Controls.Add(this.globalFrameEnd);
+            this.dupeGroupBox.Controls.Add(this.globalFrameStart);
+            this.dupeGroupBox.Controls.Add(this.label1);
+            this.dupeGroupBox.Controls.Add(this.label2);
+            this.dupeGroupBox.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.dupeGroupBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
+            this.dupeGroupBox.Icon = null;
+            this.dupeGroupBox.Location = new System.Drawing.Point(489, 442);
+            this.dupeGroupBox.Margin = new System.Windows.Forms.Padding(4);
+            this.dupeGroupBox.Name = "dupeGroupBox";
+            this.dupeGroupBox.Size = new System.Drawing.Size(168, 256);
+            this.dupeGroupBox.TabIndex = 18;
+            this.dupeGroupBox.Text = "Duplication";
+            this.dupeGroupBox.UpperColor = System.Drawing.Color.Empty;
             // 
             // dupeButton2
             // 
@@ -403,17 +391,21 @@
             this.creditLabel.TabIndex = 36;
             this.creditLabel.Text = "an0nymooose\'s";
             // 
-            // pictureBox1
+            // settingsBtn
             // 
-            this.pictureBox1.BackgroundImage = global::SFM_MultiRender.Properties.Resources.gear;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Location = new System.Drawing.Point(620, 76);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(36, 38);
-            this.pictureBox1.TabIndex = 37;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsBtn.BackColor = System.Drawing.SystemColors.Control;
+            this.settingsBtn.BackgroundImage = global::SFM_MultiRender.Properties.Resources.gear;
+            this.settingsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.settingsBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.settingsBtn.Location = new System.Drawing.Point(620, 76);
+            this.settingsBtn.Name = "settingsBtn";
+            this.settingsBtn.Size = new System.Drawing.Size(36, 38);
+            this.settingsBtn.TabIndex = 37;
+            this.settingsBtn.TabStop = false;
+            this.settingsBtn.Click += new System.EventHandler(this.settingsButton_Click);
+            this.settingsBtn.MouseEnter += new System.EventHandler(this.settingsBtn_MouseEnter);
+            this.settingsBtn.MouseLeave += new System.EventHandler(this.settingsBtn_MouseLeave);
+
             // 
             // mainFormHeader
             // 
@@ -441,24 +433,24 @@
             this.mainFormHeader.yPosAdjust = 7;
             this.mainFormHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainRenderFormHeader_MouseDown);
             // 
-            // mentQButton1
+            // clearAllButton
             // 
-            this.mentQButton1.BackColor = System.Drawing.Color.IndianRed;
-            this.mentQButton1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mentQButton1.ForeColor = System.Drawing.Color.White;
-            this.mentQButton1.isSquare = false;
-            this.mentQButton1.Location = new System.Drawing.Point(166, 734);
-            this.mentQButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.mentQButton1.Name = "mentQButton1";
-            this.mentQButton1.Size = new System.Drawing.Size(82, 29);
-            this.mentQButton1.TabIndex = 38;
-            this.mentQButton1.Text = "Clear all";
-            this.mentQButton1.Underline = true;
-            this.mentQButton1.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
-            this.mentQButton1.UnderlineSize = 4;
-            this.mentQButton1.UseVisualStyleBackColor = false;
-            this.mentQButton1.yPosAdjust = 0;
-            this.mentQButton1.Click += new System.EventHandler(this.clearAllSessions_Click);
+            this.clearAllButton.BackColor = System.Drawing.Color.IndianRed;
+            this.clearAllButton.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearAllButton.ForeColor = System.Drawing.Color.White;
+            this.clearAllButton.isSquare = false;
+            this.clearAllButton.Location = new System.Drawing.Point(166, 734);
+            this.clearAllButton.Margin = new System.Windows.Forms.Padding(4);
+            this.clearAllButton.Name = "clearAllButton";
+            this.clearAllButton.Size = new System.Drawing.Size(82, 29);
+            this.clearAllButton.TabIndex = 38;
+            this.clearAllButton.Text = "Clear all";
+            this.clearAllButton.Underline = true;
+            this.clearAllButton.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.clearAllButton.UnderlineSize = 4;
+            this.clearAllButton.UseVisualStyleBackColor = false;
+            this.clearAllButton.yPosAdjust = 0;
+            this.clearAllButton.Click += new System.EventHandler(this.clearAllSessions_Click);
             // 
             // abortAllButton
             // 
@@ -480,14 +472,35 @@
             this.abortAllButton.yPosAdjust = -5;
             this.abortAllButton.Click += new System.EventHandler(this.abortAllButton_Click);
             // 
+            // debugBtn
+            // 
+            this.debugBtn.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.debugBtn.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.debugBtn.ForeColor = System.Drawing.Color.White;
+            this.debugBtn.isSquare = false;
+            this.debugBtn.Location = new System.Drawing.Point(276, 727);
+            this.debugBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.debugBtn.Name = "debugBtn";
+            this.debugBtn.Size = new System.Drawing.Size(99, 50);
+            this.debugBtn.TabIndex = 40;
+            this.debugBtn.Text = "Debug";
+            this.debugBtn.Underline = true;
+            this.debugBtn.UnderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.debugBtn.UnderlineSize = 4;
+            this.debugBtn.UseVisualStyleBackColor = false;
+            this.debugBtn.Visible = false;
+            this.debugBtn.yPosAdjust = 0;
+            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
+            // 
             // SFM_MultiRenderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(672, 811);
+            this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.abortAllButton);
-            this.Controls.Add(this.mentQButton1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.clearAllButton);
+            this.Controls.Add(this.settingsBtn);
             this.Controls.Add(this.creditLabel);
             this.Controls.Add(this.autoHideCheckbox);
             this.Controls.Add(this.statusModule);
@@ -496,13 +509,12 @@
             this.Controls.Add(this.launchOptionsButton);
             this.Controls.Add(this.sessionCountVisual);
             this.Controls.Add(this.launchButton);
-            this.Controls.Add(this.debugButton);
             this.Controls.Add(this.mentQButton6);
             this.Controls.Add(this.mentQButton3);
             this.Controls.Add(this.removeSessionButton);
             this.Controls.Add(this.addSessionButton);
             this.Controls.Add(this.mainFormHeader);
-            this.Controls.Add(this.mentQGroupBox1);
+            this.Controls.Add(this.dupeGroupBox);
             this.Controls.Add(this.debugtxt);
             this.Controls.Add(this.sessionLayoutList);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -512,10 +524,9 @@
             this.Padding = new System.Windows.Forms.Padding(4, 79, 3, 2);
             this.Text = "       SFM Multi-Render 1.0";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SFM_MultiRender_KeyDown);
-            this.mentQGroupBox1.ResumeLayout(false);
-            this.mentQGroupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.dupeGroupBox.ResumeLayout(false);
+            this.dupeGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.settingsBtn)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -528,13 +539,12 @@
         private System.Windows.Forms.Label label2;
         private MentQ.MentQButton dupeButton1;
         private MentQ.MentQButton dupeButton2;
-        private MentQ.MentQGroupBox mentQGroupBox1;
+        private MentQ.MentQGroupBox dupeGroupBox;
         private MentQ.MentQInfoBox mainFormHeader;
         private MentQ.MentQButton addSessionButton;
         private MentQ.MentQButton removeSessionButton;
         private MentQ.MentQButton mentQButton3;
         private MentQ.MentQButton mentQButton6;
-        private System.Windows.Forms.Button debugButton;
         private MentQ.MentQButton launchButton;
         private MentQ.MentQEllipticalProgress sessionCountVisual;
         private MentQ.MentQButton launchOptionsButton;
@@ -545,9 +555,10 @@
         public MentQ.MentQCheckBox autoHideCheckbox;
         public MentQ.MentQNotification statusModule;
         private System.Windows.Forms.Label creditLabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private MentQ.MentQButton mentQButton1;
+        private System.Windows.Forms.PictureBox settingsBtn;
+        private MentQ.MentQButton clearAllButton;
         private MentQ.MentQButton abortAllButton;
+        private MentQ.MentQButton debugBtn;
     }
 }
 
