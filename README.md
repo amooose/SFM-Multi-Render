@@ -5,6 +5,10 @@ A simple but hacky way to speed up SFM's render time by 4-5x
 This program splits your project up into multiple SFM sessions/processes, giving us a "multi-core" rendering experience from a single-core limited program.
 Your PC should be decent enough if you plan on running 4-10 copies, but I imagine lower end PCs may benefit from 2-3.
 
+**This will only work if you have enough VRAM, RAM, and CPU power to render multiple copies of your project.**  
+If you have 10gb VRAM, and rendering one session only uses 2gb, this will work.  
+If you have 10gb VRAM, and rendering one session uses > 5gb, this will not work.  
+
 # Instructions
 You likely need to run this program as administrator (more info in the notes section)
 1. Patch your launcher to enable multirun [here](https://steamcommunity.com/sharedfiles/filedetails/?id=3481598701&searchtext=).  
